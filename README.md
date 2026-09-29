@@ -2,7 +2,7 @@
   <img src="docs/assets/hero.jpg" alt="Verifier-Induced Support Reshaping in On-Policy Optimization" width="100%">
 </p>
 
-<h1 align="center">Verifier-Induced Support Reshaping in On-Policy Optimization</h1>
+<h2 align="center">Verifier-Induced Support Reshaping in On-Policy Optimization</h2>
 
 <p align="center">
   Shaohang Wei<sup>1‡</sup>, Zikun Su<sup>2</sup>, Feifan Song<sup>1</sup>,
