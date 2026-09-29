@@ -1,5 +1,58 @@
 (() => {
   'use strict';
+  const toc = document.querySelector('.page-toc');
+  if (toc) {
+    const compact = window.matchMedia('(max-width: 1279px)');
+    const summary = toc.querySelector('summary');
+    const links = Array.from(toc.querySelectorAll('a'));
+    const sections = links.map(link => document.getElementById(link.hash.slice(1)));
+    const setLayout = () => { toc.open = !compact.matches; };
+    setLayout();
+    compact.addEventListener('change', setLayout);
+
+    links.forEach(link => link.addEventListener('click', event => {
+      if (event.ctrlKey || event.metaKey || event.shiftKey || event.altKey) return;
+      if (compact.matches) {
+        toc.open = false;
+        summary.focus({preventScroll:true});
+      }
+    }));
+    document.addEventListener('click', event => {
+      if (compact.matches && !toc.contains(event.target)) toc.open = false;
+    });
+    toc.addEventListener('keydown', event => {
+      if (event.key === 'Escape') {
+        toc.open = false;
+        summary.focus({preventScroll:true});
+      }
+    });
+
+    let pending = false;
+    const updateCurrent = () => {
+      pending = false;
+      let current = 0;
+      const threshold = Math.min(120, window.innerHeight * .2);
+      sections.forEach((section, index) => {
+        if (section && section.getBoundingClientRect().top <= threshold) current = index;
+      });
+      if (window.scrollY + window.innerHeight >= document.documentElement.scrollHeight - 2) current = links.length - 1;
+      links.forEach((link, index) => {
+        if (index === current) link.setAttribute('aria-current', 'location');
+        else link.removeAttribute('aria-current');
+      });
+    };
+    const scheduleUpdate = () => {
+      if (!pending) {
+        pending = true;
+        window.requestAnimationFrame(updateCurrent);
+      }
+    };
+    window.addEventListener('scroll', scheduleUpdate, {passive:true});
+    window.addEventListener('resize', scheduleUpdate);
+    window.addEventListener('load', scheduleUpdate);
+    updateCurrent();
+  }
+
   document.querySelectorAll('[data-tabs]').forEach(group => {
     const tabs = Array.from(group.querySelectorAll('[role="tab"]'));
     const activate = (tab, focus = false) => {
