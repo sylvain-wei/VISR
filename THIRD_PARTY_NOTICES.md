@@ -58,3 +58,7 @@ Model weights and benchmark corpora are not redistributed in this repository.
 Their identifiers in `eval/configs/` are references to external projects and do
 not place those assets under this repository's license. Users must follow the
 licenses and terms published by each model or dataset provider.
+
+## CMU Serif webfonts
+
+Unmodified CMU Serif WOFF2 fonts from `computer-modern@0.1.3` are bundled in `docs/assets/fonts/` under SIL Open Font License 1.1. Copyright, reserved font names, license text, and source URLs are retained in that directory. See [font provenance](docs/assets/fonts/README.md).

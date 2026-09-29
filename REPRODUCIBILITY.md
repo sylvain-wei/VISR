@@ -90,9 +90,8 @@ traceback.
 ## Documentation figure artifacts
 
 The project page and README include a curated set of static paper figures under
-`docs/assets/figures/`. These files were recovered from the official
-arXiv:2608.00220v1 TeX source and converted from the source vector PDFs to SVG
-for web delivery. Their item-by-item provenance and the CC BY 4.0 paper-figure
+`docs/assets/figures/`. The current site uses vector PDFs from the author-provided technical report
+and matching SVG exports, plus a visualization of the reported joint-support table. Their item-by-item provenance and the CC BY 4.0 paper-figure
 license are recorded in `docs/assets/figures/README.md`.
 
 These exports are documentation artifacts, not a release of the manuscript
@@ -101,10 +100,10 @@ intermediate analysis artifacts, or general rendering and styling code needed
 to regenerate all paper figures. Adding the static exports therefore does not
 change the end-to-end reproduction boundary described above.
 
-The project page additionally includes the official Peking University mark and
-three clearly labeled editorial interludes. The interludes are conceptual
-generated artwork and do not encode measurements, experimental results, or
-model internals. Asset-level source, generation, conversion, and licensing
+The asset directory also retains the official Peking University mark and
+three conceptual illustrations from the earlier page design. The redesigned
+page uses the paper figures directly; the retained illustrations do not encode
+measurements, experimental results, or model internals. Asset-level source, generation, conversion, and licensing
 notes are recorded in `docs/assets/README.md` and
 `docs/assets/illustrations/README.md`. These site assets do not change the
 repository's scientific artifact scope.

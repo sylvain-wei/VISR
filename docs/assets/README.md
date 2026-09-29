@@ -51,3 +51,9 @@ The JPEG is a 3840 × 1101 resampled export.
 CMU Serif Roman is distributed under the SIL Open Font License 1.1. Its
 letterforms are rasterized into the banner; no font software is included in
 this asset. The banner does not use the paper figures' CC BY 4.0 license.
+
+## Current project-page typography
+
+The page uses locally hosted CMU Serif fonts. See [font provenance and license](fonts/README.md). The previous editorial illustrations are retained as assets but are no longer shown on the page.
+
+`VISR-technical-report.pdf` is the author-provided technical report corresponding to the page’s scientific content and figures.

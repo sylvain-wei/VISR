@@ -1,0 +1,48 @@
+{
+  "source": "tables/table_ch7_joint_support.tex",
+  "source_sha256": "43d694021905c3252ca7cde1858a39b919bbe2caeeee07ae835a99b5aee5837a",
+  "unit_in_source": "fraction",
+  "plotted_unit": "percent",
+  "conversion": "value \u00d7 100",
+  "note": "Only the three conditions present in the source table are plotted. No Mixed-RLVR measurements are reported in this table.",
+  "samples": {
+    "prompts_per_benchmark": 290,
+    "rollouts_per_prompt": 16
+  },
+  "data": {
+    "MathIF": {
+      "Base": {
+        "C": 0.359,
+        "F": 0.25,
+        "J": 0.094
+      },
+      "Math-RLVR": {
+        "C": 0.472,
+        "F": 0.253,
+        "J": 0.118
+      },
+      "IF-RLVR": {
+        "C": 0.377,
+        "F": 0.431,
+        "J": 0.148
+      }
+    },
+    "ReasonIF": {
+      "Base": {
+        "C": 0.467,
+        "F": 0.239,
+        "J": 0.109
+      },
+      "Math-RLVR": {
+        "C": 0.522,
+        "F": 0.235,
+        "J": 0.126
+      },
+      "IF-RLVR": {
+        "C": 0.438,
+        "F": 0.391,
+        "J": 0.171
+      }
+    }
+  }
+}

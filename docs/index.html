@@ -3,10 +3,11 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Verifier-Induced Support Reshaping in On-Policy Optimization</title>
+  <title>VISR — Verifier-Induced Support Reshaping</title>
   <meta name="description" content="Project page for Verifier-Induced Support Reshaping in On-Policy Optimization, an arXiv preprint on how on-policy verifiers reshape future trainability.">
   <link rel="canonical" href="https://sylvain-wei.github.io/VISR/">
   <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="preload" href="assets/fonts/cmu-serif-500-roman.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="stylesheet" href="styles.css">
 
   <meta property="og:title" content="Verifier-Induced Support Reshaping in On-Policy Optimization">
@@ -60,364 +61,122 @@
   }
   </script>
 </head>
+
 <body>
-  <a class="skip-link" href="#main-content">Skip to main content</a>
-  <div class="reading-progress" aria-hidden="true"><span data-reading-progress></span></div>
-
-  <header class="site-header" data-header>
-    <nav class="nav-shell" aria-label="Primary navigation">
-      <a class="wordmark" href="#overview" aria-label="Verifier-Induced Support Reshaping home">
-        <svg aria-hidden="true" viewBox="0 0 44 24"><path d="M2 17C9 6 15 5 22 13s13 6 20-5"/><circle cx="2" cy="17" r="2"/><circle cx="22" cy="13" r="2"/><circle cx="42" cy="8" r="2"/></svg>
-        <span>Support Reshaping</span>
-      </a>
-      <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="primary-links" data-nav-toggle>
-        <span>Contents</span><span aria-hidden="true">+</span>
-      </button>
-      <div class="nav-links" id="primary-links" data-nav-links>
-        <a href="#overview">Overview</a>
-        <a href="#findings">Findings</a>
-        <a href="#mechanism">Mechanism</a>
-        <a href="#preservation">Preservation</a>
-        <a href="#paper">Paper</a>
-        <a href="#code">Code</a>
-      </div>
+<noscript><style>[role="tabpanel"][hidden]{display:block!important}.tab-list{display:none}</style></noscript>
+<a class="skip-link" href="#main-content">Skip to content</a>
+<header class="hero" id="overview">
+  <div class="container">
+    <p class="project-name">VISR</p>
+    <h1>Verifier-Induced Support Reshaping<br class="desktop-break"> in On-Policy Optimization</h1>
+    <div class="authors" aria-label="Authors">
+      <span><a href="https://sylvain-wei.github.io/">Shaohang Wei</a><sup>1,‡</sup></span><span>Zikun Su<sup>2</sup></span><span>Feifan Song<sup>1</sup></span><span>Wen Luo<sup>1</sup></span><span>Wei Li<sup>1</sup></span><span>Guangyue Peng<sup>1</sup></span><span>Houfeng Wang<sup>1,†</sup></span>
+    </div>
+    <p class="affiliations"><span><sup>1</sup>Peking University</span><span><sup>2</sup>BUPT</span></p>
+    <p class="author-notes"><span><sup>‡</sup>Project Lead</span><span><sup>†</sup>Corresponding Author</span></p>
+    <nav class="resource-links" aria-label="Resources">
+      <a href="https://arxiv.org/abs/2608.00220">Paper ↗</a><a href="assets/VISR-technical-report.pdf">Report PDF ↗</a><a href="https://github.com/sylvain-wei/VISR">Code ↗</a><a href="#citation">BibTeX ↓</a>
     </nav>
-  </header>
+  </div>
+</header>
+<main id="main-content">
+  <section class="overview container" aria-label="Research overview">
+<figure class="paper-figure">
+    <a class="figure-link" href="assets/figures/fig1-overview.svg" data-zoom aria-label="Enlarge: Overview of verifier-induced support reshaping: a finite rollout budget connects the current verifier to future training support."><img src="assets/figures/fig1-overview.svg" alt="Overview of verifier-induced support reshaping: a finite rollout budget connects the current verifier to future training support." fetchpriority="high" width="167.04" height="66" decoding="async"></a>
+    <figcaption><span><strong>What remains learnable next?</strong> A verifier changes which successful responses future on-policy training can still sample and reinforce.</span><span class="figure-downloads"><a href="assets/figures/fig1-overview.pdf" target="_blank" rel="noopener" aria-label="PDF: overview">PDF ↗</a><a href="assets/figures/fig1-overview.svg" target="_blank" rel="noopener" aria-label="SVG: overview">SVG ↗</a></span></figcaption>
+  </figure>
 
-  <main id="main-content">
-    <section class="hero" id="overview" aria-labelledby="paper-title">
-      <div class="chapter-tab chapter-tab--hero" aria-hidden="true"><span>01</span><small>Intro</small></div>
-      <p class="margin-note margin-note--hero" aria-hidden="true">Within a finite rollout budget, the verifier changes which future behaviors remain reachable.</p>
-      <h1 class="hero-title wide-column" id="paper-title"><span>Verifier-Induced</span> <em>Support Reshaping</em> <span>in On-Policy Optimization</span></h1>
-      <div class="hero-layout wide-column">
-        <div class="hero-copy">
-          <p class="authors">Shaohang Wei<sup>1</sup>, Zikun Su<sup>2</sup>, Feifan Song<sup>1</sup>, Wen Luo<sup>1</sup>, Wei Li<sup>1</sup>, Guangyue Peng<sup>1</sup>, and Houfeng Wang<sup>1</sup></p>
-          <div class="institution-row">
-            <a class="institution-mark" href="https://www.pku.edu.cn/" aria-label="Visit the official Peking University website">
-              <img src="assets/pku-logo.svg" width="1134" height="320" alt="Peking University">
-            </a>
-            <span aria-hidden="true">·</span>
-            <p class="affiliations"><sup>1</sup>Peking University<br><sup>2</sup>BUPT</p>
-          </div>
-          <p class="publication">arXiv preprint, 2026.</p>
-          <nav class="resource-links" aria-label="Paper resources">
-            <a href="https://arxiv.org/abs/2608.00220">Paper</a>
-            <a href="https://arxiv.org/pdf/2608.00220">PDF</a>
-            <a href="https://github.com/sylvain-wei/VISR">Code</a>
-            <a href="#citation">Citation</a>
-          </nav>
-          <p class="thesis">On-policy verifiers do more than score sampled trajectories. They reshape which behaviors remain reachable, rewardable, and trainable next.</p>
-          <p class="fragment-guide"><span aria-hidden="true">↘</span> Paper excerpts live at the page edge. Click one to scatter—and click again to recompose—the text.</p>
-        </div>
+  </section>
+  <section class="abstract-section" id="abstract">
+    <div class="abstract-copy">
+      <h2>Abstract</h2>
+      <p>On-policy reinforcement learning with verifiable rewards (RLVR) can improve the current objective while making successful behaviors for later objectives harder to sample. We study this <em>verifier-induced support reshaping</em> through mathematical reasoning and constrained instruction following across two model families. Math-RLVR raises average instruction-following success but leaves fewer prompts solvable under repeated sampling. IF-RLVR reduces math searchability and the reward variation available to later training. Distributional analyses and controlled interventions locate a key change at the response opening. Reference-policy constraints, routing priors, and on-policy distillation preserve cross-task support only partially. Tests on MathIF and ReasonIF further show that separate gains only partly translate into answers that are both correct and constraint-following.</p>
+    </div>
+    <p class="tldr reading"><strong>TL;DR.</strong> A better score today does not guarantee that tomorrow’s successful responses remain reachable. </p>
+  </section>
+  <section class="section container" id="setup">
+    <div class="reading">
+      <h2>The question behind the score</h2>
+      <p>With a fixed rollout budget, a successful response must remain likely enough to be sampled before an on-policy update can reinforce it. We call these reachable successes <strong>effective rewardable support</strong>.</p>
+      <p>We train Qwen3-8B-Base and Qwen2.5-Math-7B with math or instruction-following (IF) verifiers, then test both directions and both training orders. <strong>pass@1</strong> measures average single-rollout success; <strong>best@k</strong> measures the share of prompts with at least one success in <em>k</em> samples.</p>
+    </div>
+    <nav class="section-links" aria-label="Key insights"><a href="#findings">Scores &amp; support</a><a href="#sequence">Training order</a><a href="#mechanism">Response openings</a><a href="#preservation">Preservation</a><a href="#joint">Joint success</a></nav>
+  </section>
+  <section class="section container" id="findings">
+    <div class="reading"><h2>Higher scores can hide narrower support</h2>
+      <p>The two verifiers reshape cross-task behavior differently. Math-RLVR increases average IF success while reducing prompt coverage; IF-RLVR makes correct math responses harder to find even with more samples.</p>
+    </div>
+<div class="experiment-tabs" data-tabs><div class="tab-list" role="tablist" aria-label="Cross-task direction"><button id="tab-math-if" role="tab" aria-selected="true" aria-controls="panel-math-if" tabindex="0">Math → instruction following</button><button id="tab-if-math" role="tab" aria-selected="false" aria-controls="panel-if-math" tabindex="-1">Instruction following → math</button></div><div id="panel-math-if" role="tabpanel" aria-labelledby="tab-math-if" tabindex="0"><div class="reading experiment-copy"><p>On IFEval with Qwen3-8B-Base, <strong>pass@1 rises by 6.5%</strong> while <strong>best@32 falls by 9.8%</strong> (absolute changes). The same split appears across both models and both IF benchmarks: more prompts become consistently correct, but more also become consistently wrong.</p></div><figure class="paper-figure">
+    <a class="figure-link" href="assets/figures/fig2-if-polarization.svg" data-zoom aria-label="Enlarge: Math-RLVR increases IF pass@1 while best@32 decreases; prompts move toward all-correct and all-wrong outcomes."><img src="assets/figures/fig2-if-polarization.svg" alt="Math-RLVR increases IF pass@1 while best@32 decreases; prompts move toward all-correct and all-wrong outcomes." loading="lazy" width="238.5" height="96.24" decoding="async"></a>
+    <figcaption><span><strong>Math-RLVR.</strong> Average success, repeated-sampling coverage, and prompt-level outcome shifts.</span><span class="figure-downloads"><a href="assets/figures/fig2-if-polarization.pdf" target="_blank" rel="noopener" aria-label="PDF: math-if">PDF ↗</a><a href="assets/figures/fig2-if-polarization.svg" target="_blank" rel="noopener" aria-label="SVG: math-if">SVG ↗</a></span></figcaption>
+  </figure></div><div id="panel-if-math" role="tabpanel" aria-labelledby="tab-if-math" tabindex="0" hidden><div class="reading experiment-copy"><p>After IF-RLVR, AIME best@k falls at every tested budget from 4 to 32. Visible openings shift from step-by-step derivations (<strong>DRI</strong>) toward direct answers (<strong>DAI</strong>). These labels describe generated text, not hidden reasoning states.</p></div><figure class="paper-figure">
+    <a class="figure-link" href="assets/figures/fig3-math-searchability.svg" data-zoom aria-label="Enlarge: IF-RLVR lowers AIME best@k for k = 4, 8, 16, and 32 as direct-answer openings become dominant."><img src="assets/figures/fig3-math-searchability.svg" alt="IF-RLVR lowers AIME best@k for k = 4, 8, 16, and 32 as direct-answer openings become dominant." loading="lazy" width="238.5" height="87.96" decoding="async"></a>
+    <figcaption><span><strong>IF-RLVR.</strong> Math searchability falls as direct-answer openings become dominant.</span><span class="figure-downloads"><a href="assets/figures/fig3-math-searchability.pdf" target="_blank" rel="noopener" aria-label="PDF: if-math">PDF ↗</a><a href="assets/figures/fig3-math-searchability.svg" target="_blank" rel="noopener" aria-label="SVG: if-math">SVG ↗</a></span></figcaption>
+  </figure></div></div>
 
-        <figure class="support-atlas" aria-labelledby="atlas-caption">
-          <svg viewBox="0 0 680 590" role="img" aria-labelledby="atlas-title atlas-desc">
-            <title id="atlas-title">Conceptual map of verifier-induced support reshaping</title>
-            <desc id="atlas-desc">Many possible trajectory routes approach a finite-rollout-budget verifier. A smaller, reranked set remains reachable on the other side.</desc>
-            <g class="atlas-grid"><path d="M495 16v116M537 16v116M579 16v116M621 16v116M663 16v116M474 37h190M474 79h190M474 121h190"/></g>
-            <g class="atlas-faint">
-              <path d="M18 142C122 124 172 214 300 238"/><path d="M18 188C137 176 181 118 300 230"/><path d="M18 234C130 248 206 168 300 247"/><path d="M18 280C124 302 208 298 300 265"/><path d="M18 326C136 304 205 376 300 283"/><path d="M18 372C143 395 209 333 300 300"/><path d="M18 418C148 452 213 385 300 316"/>
-            </g>
-            <g class="atlas-nodes atlas-nodes--faint"><circle cx="18" cy="142" r="5"/><circle cx="18" cy="188" r="5"/><circle cx="18" cy="234" r="5"/><circle cx="18" cy="280" r="5"/><circle cx="18" cy="326" r="5"/><circle cx="18" cy="372" r="5"/><circle cx="18" cy="418" r="5"/></g>
-            <g class="atlas-gate"><path d="M302 164h58l13 31v205l-13 31h-58l-13-31V195z"/><text x="331" y="309" text-anchor="middle">V</text></g>
-            <g class="atlas-active">
-              <path d="M373 236C443 220 496 151 654 164"/><path d="M373 273C472 265 504 242 654 257"/><path d="M373 309C472 312 520 347 654 339"/><path d="M373 346C464 363 536 443 654 424"/>
-            </g>
-            <g class="atlas-nodes atlas-nodes--active"><circle cx="438" cy="220" r="6"/><circle cx="512" cy="183" r="6"/><circle cx="595" cy="164" r="6"/><circle cx="458" cy="267" r="6"/><circle cx="548" cy="249" r="6"/><circle cx="459" cy="319" r="6"/><circle cx="548" cy="344" r="6"/><circle cx="450" cy="366" r="6"/><circle cx="548" cy="417" r="6"/></g>
-            <g class="atlas-copy"><text x="18" y="104">possible trajectories</text><text x="331" y="126" text-anchor="middle">verifier</text><text x="331" y="147" text-anchor="middle">finite rollout budget</text><text x="506" y="104">reachable next</text><text x="331" y="474" text-anchor="middle">effective support depends on budget B</text></g>
-            <path class="atlas-bracket" d="M289 457v20h84v-20"/>
-          </svg>
-          <figcaption id="atlas-caption"><strong>Conceptual map.</strong> The verifier reranks routes within a finite sampling budget. This illustration is not experimental data.</figcaption>
-        </figure>
-      </div>
+  </section>
+  <section class="section container" id="sequence">
+    <div class="reading"><h2>Training order shapes future learning</h2>
+      <p>Switching verifiers exposes the consequence of narrower support. IF-first training leaves little reward variation for later math updates; in the reverse order, retaining math performance limits IF adaptation.</p>
+    </div>
+<div class="experiment-tabs" data-tabs><div class="tab-list" role="tablist" aria-label="Sequential training experiments"><button id="tab-sequence" role="tab" aria-selected="true" aria-controls="panel-sequence" tabindex="0">IF → Math</button><button id="tab-kl" role="tab" aria-selected="false" aria-controls="panel-kl" tabindex="-1">Math → IF · reference KL</button></div><div id="panel-sequence" role="tabpanel" aria-labelledby="tab-sequence" tabindex="0"><div class="reading experiment-copy"><p>After the switch to Math-RLVR, the group of prompts with both successful and failed rollouts shrinks from <strong>33.6% to 1.6%</strong> within 20 steps. Scores improve, but almost all groups become uniformly right or wrong, leaving little within-group learning signal.</p></div><figure class="paper-figure compact">
+    <a class="figure-link" href="assets/figures/fig4-sequential-training.svg" data-zoom aria-label="Enlarge: After IF-first training, the mixed-success prompt group falls from 33.6% to 1.6% within 20 steps of Math-RLVR."><img src="assets/figures/fig4-sequential-training.svg" alt="After IF-first training, the mixed-success prompt group falls from 33.6% to 1.6% within 20 steps of Math-RLVR." loading="lazy" width="248.4" height="103.765" decoding="async"></a>
+    <figcaption><span><strong>Sequential training.</strong> Better outcomes do not restore mixed support or step-by-step openings along this observed path.</span><span class="figure-downloads"><a href="assets/figures/fig4-sequential-training.pdf" target="_blank" rel="noopener" aria-label="PDF: sequence">PDF ↗</a><a href="assets/figures/fig4-sequential-training.svg" target="_blank" rel="noopener" aria-label="SVG: sequence">SVG ↗</a></span></figcaption>
+  </figure></div><div id="panel-kl" role="tabpanel" aria-labelledby="tab-kl" tabindex="0" hidden><div class="reading experiment-copy"><p>We sweep the reference-policy KL coefficient over 0, 0.04, 0.08, and 0.12. Stronger constraints retain more math performance but yield smaller IF gains. <strong>No tested coefficient achieves both math retention and the unconstrained IF gains.</strong></p></div><figure class="paper-figure">
+    <a class="figure-link" href="assets/figures/fig5-reference-kl.svg" data-zoom aria-label="Enlarge: Reference KL coefficients 0, 0.04, 0.08, and 0.12 compare math retention with IF adaptation."><img src="assets/figures/fig5-reference-kl.svg" alt="Reference KL coefficients 0, 0.04, 0.08, and 0.12 compare math retention with IF adaptation." loading="lazy" width="238.5" height="97.8" decoding="async"></a>
+    <figcaption><span><strong>Reference KL.</strong> Curves show mean@32; shaded bands show std@32.</span><span class="figure-downloads"><a href="assets/figures/fig5-reference-kl.pdf" target="_blank" rel="noopener" aria-label="PDF: kl">PDF ↗</a><a href="assets/figures/fig5-reference-kl.svg" target="_blank" rel="noopener" aria-label="SVG: kl">SVG ↗</a></span></figcaption>
+  </figure></div></div>
 
-      <figure class="hero-figure wide-column">
-        <div class="figure-kicker"><span>Figure 1</span><span>Paper overview</span></div>
-        <a class="figure-link" href="assets/figures/fig1-overview.svg" data-zoom data-alt="Paper overview contrasting backward-looking catastrophic forgetting with forward-looking support reshaping, then showing the bidirectional Math-RLVR and IF-RLVR study." data-caption="Figure 1. Verifiers reshape what on-policy training can learn next.">
-          <img src="assets/figures/fig1-overview.svg" width="1200" height="474" alt="Paper overview contrasting backward-looking catastrophic forgetting with forward-looking support reshaping, then showing the bidirectional Math-RLVR and IF-RLVR study.">
-          <span class="zoom-hint">Open figure <span aria-hidden="true">↗</span></span>
-        </a>
-        <figcaption><strong>Figure 1.</strong> Catastrophic forgetting looks back at retained performance; support reshaping looks ahead at future trainability. The study tests both training orders with Math-RLVR and IF-RLVR.</figcaption>
-      </figure>
-    </section>
+  </section>
+  <section class="section container" id="mechanism">
+    <div class="reading"><h2>Response openings change math searchability</h2>
+      <p>The largest next-token distribution shift occurs at the first response token. RLVR reweights existing token candidates and can promote low-probability openings. Controlled interventions then test whether choosing a different opening changes which math solutions can be reached.</p>
+    </div>
+<div class="experiment-tabs" data-tabs><div class="tab-list" role="tablist" aria-label="Response-opening evidence"><button id="tab-intervention" role="tab" aria-selected="true" aria-controls="panel-intervention" tabindex="0">Opening intervention</button><button id="tab-divergence" role="tab" aria-selected="false" aria-controls="panel-divergence" tabindex="-1">Where the policy changes</button><button id="tab-position" role="tab" aria-selected="false" aria-controls="panel-position" tabindex="-1">Position control</button></div><div id="panel-intervention" role="tabpanel" aria-labelledby="tab-intervention" tabindex="0"><div class="reading experiment-copy"><p><strong>Without updating model parameters</strong>, forcing Base-side tokens or step-by-step (DRI) prefixes increases math best@32 from IF-RLVR checkpoints in both families. The reverse intervention is asymmetric across models, so the result supports an opening-route effect within the tested settings.</p></div><figure class="paper-figure">
+    <a class="figure-link" href="assets/figures/fig8-opening-intervention-a.svg" data-zoom aria-label="Enlarge: Forcing Base-side or step-by-step openings improves math best@32 from IF-RLVR checkpoints in both model families."><img src="assets/figures/fig8-opening-intervention-a.svg" alt="Forcing Base-side or step-by-step openings improves math best@32 from IF-RLVR checkpoints in both model families." loading="lazy" width="248.4" height="120" decoding="async"></a>
+    <figcaption><span><strong>Controlled intervention.</strong> Free decoding versus forced first tokens and prefixes on AIME and MATH-500.</span><span class="figure-downloads"><a href="assets/figures/fig8-opening-intervention-a.pdf" target="_blank" rel="noopener" aria-label="PDF: intervention">PDF ↗</a><a href="assets/figures/fig8-opening-intervention-a.svg" target="_blank" rel="noopener" aria-label="SVG: intervention">SVG ↗</a></span></figcaption>
+  </figure></div><div id="panel-divergence" role="tabpanel" aria-labelledby="tab-divergence" tabindex="0" hidden><div class="reading experiment-copy"><p>Position-wise Jensen–Shannon divergence peaks at the first generated token. The token analysis shows reweighting of existing opening candidates; <a href="assets/figures/fig7-first-token-probabilities.pdf">the first-token probabilities</a> show math and IF verifiers promoting different openings.</p></div><figure class="paper-figure compact">
+    <a class="figure-link" href="assets/figures/fig6-opening-divergence.svg" data-zoom aria-label="Enlarge: The largest mean next-token Jensen–Shannon divergence occurs at the first response token."><img src="assets/figures/fig6-opening-divergence.svg" alt="The largest mean next-token Jensen–Shannon divergence occurs at the first response token." loading="lazy" width="234" height="134" decoding="async"></a>
+    <figcaption><span><strong>Distributional evidence.</strong> The largest mean policy shift is concentrated at response entry.</span><span class="figure-downloads"><a href="assets/figures/fig6-opening-divergence.pdf" target="_blank" rel="noopener" aria-label="PDF: divergence">PDF ↗</a><a href="assets/figures/fig6-opening-divergence.svg" target="_blank" rel="noopener" aria-label="SVG: divergence">SVG ↗</a></span></figcaption>
+  </figure></div><div id="panel-position" role="tabpanel" aria-labelledby="tab-position" tabindex="0" hidden><div class="reading experiment-copy"><p>In the Qwen3 AIME sweep, forcing the same IF-side token suppresses DRI only near the response opening. Moving it later restores the DRI route, although best@32 remains variable.</p></div><figure class="paper-figure compact">
+    <a class="figure-link" href="assets/figures/fig8-opening-intervention-b.svg" data-zoom aria-label="Enlarge: Moving the same forced token later in the response restores the step-by-step opening rate in the Qwen3 AIME position sweep."><img src="assets/figures/fig8-opening-intervention-b.svg" alt="Moving the same forced token later in the response restores the step-by-step opening rate in the Qwen3 AIME position sweep." loading="lazy" width="248.4" height="105" decoding="async"></a>
+    <figcaption><span><strong>Position control.</strong> The same token is inserted at different response positions.</span><span class="figure-downloads"><a href="assets/figures/fig8-opening-intervention-b.pdf" target="_blank" rel="noopener" aria-label="PDF: position">PDF ↗</a><a href="assets/figures/fig8-opening-intervention-b.svg" target="_blank" rel="noopener" aria-label="SVG: position">SVG ↗</a></span></figcaption>
+  </figure></div></div>
 
-    <section class="concept section-space" aria-labelledby="concept-title">
-      <div class="chapter-tab" aria-hidden="true"><span>02</span><small>Concept</small></div>
-      <p class="margin-note" aria-hidden="true">Not only what survived, but what can still be found next.</p>
-      <div class="reading-column">
-        <h2 id="concept-title">Looking forward, not only looking back</h2>
-        <p class="lead">A capability can remain possible in principle yet become too rare to appear within the rollouts available to the next on-policy stage.</p>
-      </div>
-      <div class="concept-comparison wide-column">
-        <article>
-          <p class="concept-number" aria-hidden="true">01</p>
-          <h3>Catastrophic forgetting</h3>
-          <p>Asks what performance or previously learned capability remains after adaptation. It is retrospective.</p>
-        </article>
-        <svg class="route-mark" aria-hidden="true" viewBox="0 0 180 80">
-          <path d="M4 52C40 6 73 68 105 31s49-18 70-5"/>
-          <path d="m167 18 10 8-12 5"/>
-        </svg>
-        <article>
-          <p class="concept-number" aria-hidden="true">02</p>
-          <h3>Support reshaping</h3>
-          <p>Asks what reward-positive trajectory remains likely enough to discover and reinforce next. It is prospective and budget-dependent.</p>
-        </article>
-      </div>
-      <div class="concept-art-row wide-column">
-        <figure class="editorial-art">
-          <img loading="lazy" src="assets/illustrations/support-reachability.webp" width="971" height="1619" alt="Hand-drawn editorial illustration of two paper routes, one fading and one remaining open through a small gate.">
-          <figcaption><strong>Editorial interlude.</strong> Effective support asks what remains reachable within a finite sampling budget. Conceptual artwork—not experimental data.</figcaption>
-        </figure>
-        <blockquote class="pull-quote">“A verifier does more than improve what the policy does now; it changes what the policy can still learn next.”</blockquote>
-      </div>
-    </section>
+  </section>
+  <section class="section container" id="preservation">
+    <div class="reading"><h2>Preserving support takes more than a prior</h2>
+      <p>The opening effect suggests two interventions: initialize a reasoning-friendly route, or provide dense teacher supervision through on-policy distillation (OPD). A one-time prior only delays the shift, and OPD outcomes depend on which teacher state is used.</p>
+    </div>
+<div class="experiment-tabs" data-tabs><div class="tab-list" role="tablist" aria-label="Support-preservation experiments"><button id="tab-prior" role="tab" aria-selected="true" aria-controls="panel-prior" tabindex="0">Routing prior</button><button id="tab-opd" role="tab" aria-selected="false" aria-controls="panel-opd" tabindex="-1">Converged teacher</button><button id="tab-scan" role="tab" aria-selected="false" aria-controls="panel-scan" tabindex="-1">Teacher selection</button></div><div id="panel-prior" role="tabpanel" aria-labelledby="tab-prior" tabindex="0"><div class="reading experiment-copy"><p>Four SFT cold starts use 50 correct math responses before the same 100-step IF-RLVR protocol. Soft DRI delays the direct-answer shift longest, but <strong>all four conditions reach 100% direct-answer (DAI) openings by step 100</strong>. A stronger prior does not last longer in this run.</p></div><figure class="paper-figure">
+    <a class="figure-link" href="assets/figures/fig9-dri-prior.svg" data-zoom aria-label="Enlarge: Four cold starts give different opening trajectories; all reach 100% DAI at step 100."><img src="assets/figures/fig9-dri-prior.svg" alt="Four cold starts give different opening trajectories; all reach 100% DAI at step 100." loading="lazy" width="318" height="140" decoding="async"></a>
+    <figcaption><span><strong>Cold starts.</strong> The prior changes when the shift occurs, not the observed endpoint route.</span><span class="figure-downloads"><a href="assets/figures/fig9-dri-prior.pdf" target="_blank" rel="noopener" aria-label="PDF: prior">PDF ↗</a><a href="assets/figures/fig9-dri-prior.svg" target="_blank" rel="noopener" aria-label="SVG: prior">SVG ↗</a></span></figcaption>
+  </figure></div><div id="panel-opd" role="tabpanel" aria-labelledby="tab-opd" tabindex="0" hidden><div class="reading experiment-copy"><p>With the step-100 IF teacher and 50 OPD student steps, the student’s MATH-500-128 mean@16 falls from <strong>34.33% to 8.79%</strong>, while shortcut responses rise from 4.5% to 18.8%. Dense supervision alone does not preserve math support.</p></div><figure class="paper-figure compact">
+    <a class="figure-link" href="assets/figures/fig10-converged-teacher.svg" data-zoom aria-label="Enlarge: Teacher and student log-probability shifts on the same rollouts; student increases concentrate on short responses."><img src="assets/figures/fig10-converged-teacher.svg" alt="Teacher and student log-probability shifts on the same rollouts; student increases concentrate on short responses." loading="lazy" width="273.6" height="122" decoding="async"></a>
+    <figcaption><span><strong>Converged-teacher OPD.</strong> Positive student log-probability shifts concentrate on short responses.</span><span class="figure-downloads"><a href="assets/figures/fig10-converged-teacher.pdf" target="_blank" rel="noopener" aria-label="PDF: opd">PDF ↗</a><a href="assets/figures/fig10-converged-teacher.svg" target="_blank" rel="noopener" aria-label="SVG: opd">SVG ↗</a></span></figcaption>
+  </figure></div><div id="panel-scan" role="tabpanel" aria-labelledby="tab-scan" tabindex="0" hidden><div class="reading experiment-copy"><p>With 100 OPD student steps for each teacher from steps 20, 40, 60, and 80, the step-40 teacher gives the strongest IF transfer. The step-20 teacher is the only one whose student improves MATH-500 mean@16 (<strong>+0.93%</strong>, absolute change). Selecting by IF performance alone misses retention and response quality.</p></div><figure class="paper-figure">
+    <a class="figure-link" href="assets/figures/fig11-teacher-state.svg" data-zoom aria-label="Enlarge: Four teacher checkpoints give different IFEval transfer, MATH-500 retention, and response-quality outcomes."><img src="assets/figures/fig11-teacher-state.svg" alt="Four teacher checkpoints give different IFEval transfer, MATH-500 retention, and response-quality outcomes." loading="lazy" width="234" height="82.5" decoding="async"></a>
+    <figcaption><span><strong>Teacher-state scan.</strong> The best transfer and retention outcomes come from different states in this four-checkpoint comparison.</span><span class="figure-downloads"><a href="assets/figures/fig11-teacher-state.pdf" target="_blank" rel="noopener" aria-label="PDF: scan">PDF ↗</a><a href="assets/figures/fig11-teacher-state.svg" target="_blank" rel="noopener" aria-label="SVG: scan">SVG ↗</a></span></figcaption>
+  </figure></div></div>
 
-    <section class="metrics-band" aria-labelledby="metrics-title">
-      <div class="wide-column metrics-layout">
-        <div>
-          <h2 id="metrics-title">Four measurements, one sampling question</h2>
-          <p>Repeated verifier-scored rollouts reveal both average success and the boundary of what remains searchable.</p>
-        </div>
-        <dl class="metric-definitions">
-          <div><dt>pass@1 / rollout mean</dt><dd>The expected success rate of one stochastic rollout.</dd></div>
-          <div><dt>best@k</dt><dd>Whether at least one of <em>k</em> sampled responses succeeds.</dd></div>
-          <div><dt>pass-count</dt><dd>The number of successful rollouts for a prompt.</dd></div>
-          <div><dt>Joint support, J = C ∧ F</dt><dd>Correctness and strict following in the same response.</dd></div>
-        </dl>
-      </div>
-    </section>
+  </section>
+  <section class="section container" id="joint">
+    <div class="reading"><h2>Separate gains only partly combine</h2>
+      <p>Can one response be both correct and instruction-following? An independent endpoint test on MathIF and ReasonIF evaluates <strong>correctness (C)</strong>, <strong>strict following (F)</strong>, and their <strong>same-response conjunction (J)</strong>, using 16 rollouts for each of 290 prompts per benchmark.</p>
+      <p>On MathIF, Math-RLVR raises correctness from 35.9% to 47.2%, but joint success moves only from 9.4% to 11.8%. IF-RLVR raises strict following from 25.0% to 43.1%, while joint success reaches 14.8%. ReasonIF shows the same gap between target-aligned gains and joint gains.</p>
+    </div>
+<figure class="paper-figure">
+    <a class="figure-link" href="assets/figures/joint-support.svg" data-zoom aria-label="Enlarge: Correctness, strict instruction following, and joint success for Base, Math-RLVR, and IF-RLVR on MathIF and ReasonIF."><img src="assets/figures/joint-support.svg" alt="Correctness, strict instruction following, and joint success for Base, Math-RLVR, and IF-RLVR on MathIF and ReasonIF." loading="lazy" width="828" height="331.2" decoding="async"></a>
+    <figcaption><span><strong>Joint-support stress test.</strong> Values from the paper’s Table 3; these independent step-720 endpoints are separate from the controlled trajectories above.</span><span class="figure-downloads"><a href="assets/figures/joint-support.pdf" target="_blank" rel="noopener" aria-label="PDF: joint">PDF ↗</a><a href="assets/figures/joint-support.svg" target="_blank" rel="noopener" aria-label="SVG: joint">SVG ↗</a></span></figcaption>
+  </figure>
 
-    <section class="section-space" id="findings" aria-labelledby="findings-title">
-      <div class="chapter-tab" aria-hidden="true"><span>03</span><small>Findings</small></div>
-      <p class="margin-note" aria-hidden="true">Average success and repeated-sampling coverage can move in opposite directions.</p>
-      <div class="reading-column section-intro">
-        <h2 id="findings-title">A bidirectional test of future trainability</h2>
-        <p>Starting from the same policy in each model family, one branch receives Math-RLVR and is evaluated for instruction-following support; the other receives IF-RLVR and is evaluated for math support. Each branch is then continued with the opposite verifier.</p>
-        <p class="caveat">Each training configuration has one fixed-seed run. Repeated rollouts measure sampling variation within a policy, not uncertainty across independent training seeds.</p>
-      </div>
-
-      <div class="study-path wide-column" role="group" aria-label="Bidirectional experimental setup">
-        <div><span>Shared Base</span><small>Qwen3-8B-Base<br>Qwen2.5-Math-7B</small></div>
-        <svg aria-hidden="true" viewBox="0 0 120 64"><path d="M2 32h104"/><path d="m96 22 11 10-11 10"/></svg>
-        <div class="math-path"><span>Math-RLVR</span><small>Measure IF support<br>then continue with IF</small></div>
-        <div class="if-path"><span>IF-RLVR</span><small>Measure math support<br>then continue with math</small></div>
-      </div>
-
-      <article class="evidence-block wide-column" aria-labelledby="finding-a-title">
-        <div class="evidence-copy">
-          <p class="finding-index">Finding A</p>
-          <h3 id="finding-a-title">Average success increases while coverage under repeated sampling decreases</h3>
-          <p>Math-RLVR moves mixed instruction-following prompts toward both extremes. An average rollout succeeds more often, yet a 32-rollout search finds a successful response for fewer prompts.</p>
-        </div>
-        <div class="result-ledger" role="group" aria-label="Representative IFEval result for Qwen3-8B-Base">
-          <div><small>Δ pass@1</small><strong class="positive">+0.065</strong><span>average success</span></div>
-          <div class="budget-ruler" aria-hidden="true"><span>1 rollout</span><i></i><span>32 rollouts</span></div>
-          <div><small>Δ best@32</small><strong class="negative">-0.098</strong><span>prompt coverage</span></div>
-        </div>
-        <figure class="scientific-figure">
-          <div class="figure-kicker"><span>Figure 2</span><span>Polarization</span></div>
-          <a class="figure-link" href="assets/figures/fig2-if-polarization.svg" data-zoom data-alt="Figure 2 shows pass@1 increasing, best@32 decreasing, and mixed instruction-following prompts shifting toward all-correct and all-wrong buckets under Math-RLVR." data-caption="Figure 2. Math-RLVR raises average instruction-following success while polarizing prompt outcomes.">
-            <img loading="lazy" src="assets/figures/fig2-if-polarization.svg" width="1200" height="484" alt="Figure 2 shows pass@1 increasing, best@32 decreasing, and mixed instruction-following prompts shifting toward all-correct and all-wrong buckets under Math-RLVR.">
-            <span class="zoom-hint">Open figure <span aria-hidden="true">↗</span></span>
-          </a>
-          <figcaption><strong>Figure 2.</strong> Math-RLVR raises average IF success while polarizing prompt outcomes. Mixed prompts move toward all-correct and all-wrong buckets.</figcaption>
-        </figure>
-        <section class="table-wrap" tabindex="0" aria-label="Final checkpoint changes in instruction-following support">
-          <table>
-            <caption>Final checkpoint minus Base</caption>
-            <thead><tr><th scope="col">Model</th><th scope="col">Benchmark</th><th scope="col">Δ pass@1</th><th scope="col">Δ best@32</th></tr></thead>
-            <tbody>
-              <tr><th scope="row">Qwen3-8B-Base</th><td>IFEval</td><td class="positive">+0.065</td><td class="negative">-0.098</td></tr>
-              <tr><th scope="row">Qwen3-8B-Base</th><td>IFBench</td><td class="positive">+0.032</td><td class="negative">-0.067</td></tr>
-              <tr><th scope="row">Qwen2.5-Math-7B</th><td>IFEval</td><td class="positive">+0.079</td><td class="negative">-0.114</td></tr>
-              <tr><th scope="row">Qwen2.5-Math-7B</th><td>IFBench</td><td class="positive">+0.016</td><td class="negative">-0.037</td></tr>
-            </tbody>
-          </table>
-        </section>
-      </article>
-
-      <article class="evidence-block wide-column" aria-labelledby="finding-b-title">
-        <div class="evidence-copy split-copy">
-          <div>
-            <p class="finding-index">Finding B</p>
-            <h3 id="finding-b-title">IF-RLVR lowers math searchability</h3>
-          </div>
-          <div>
-            <p>AIME best@k falls at every tested budget, while visible openings move from deliberative-reasoning initiation (DRI) toward direct-answer initiation (DAI).</p>
-            <p class="caveat"><strong>Pearson r = -0.85 is correlational.</strong> DRI and DAI classify the visible response opening; they do not reveal a hidden chain of thought or internal cognitive state.</p>
-          </div>
-        </div>
-        <figure class="scientific-figure">
-          <div class="figure-kicker"><span>Figure 3</span><span>Correlation</span></div>
-          <a class="figure-link" href="assets/figures/fig3-math-searchability.svg" data-zoom data-alt="Figure 3 shows AIME best@k declining for k equal to 4, 8, 16, and 32, DAI openings becoming dominant, and a negative checkpoint-level association between DAI share and best@32." data-caption="Figure 3. IF-RLVR lowers math searchability as visible response openings shift from DRI to DAI.">
-            <img loading="lazy" src="assets/figures/fig3-math-searchability.svg" width="1200" height="443" alt="Figure 3 shows AIME best@k declining for k equal to 4, 8, 16, and 32, DAI openings becoming dominant, and a negative checkpoint-level association between DAI share and best@32.">
-            <span class="zoom-hint">Open figure <span aria-hidden="true">↗</span></span>
-          </a>
-          <figcaption><strong>Figure 3.</strong> The result is behavioral and correlational: it does not show that mathematical ability is erased or that DAI alone causes lower searchability.</figcaption>
-        </figure>
-      </article>
-    </section>
-
-    <section class="mechanism-section section-space" id="mechanism" aria-labelledby="mechanism-title">
-      <div class="chapter-tab" aria-hidden="true"><span>04</span><small>Mechanism</small></div>
-      <p class="margin-note" aria-hidden="true">Correlation locates the pattern. Controlled openings test the route.</p>
-      <div class="intro-grid wide-column">
-        <div class="section-intro">
-          <h2 id="mechanism-title">The response opening is a localized control point</h2>
-          <p>Distributional analysis first locates the largest change. Controlled decoding interventions then test whether route selection itself changes downstream searchability. These are distinct pieces of evidence.</p>
-        </div>
-        <figure class="editorial-art">
-          <img loading="lazy" src="assets/illustrations/opening-route.webp" width="971" height="1619" alt="Hand-drawn editorial illustration of a small doorway, two paper trails, and a red route tile placed at the threshold.">
-          <figcaption><strong>Editorial interlude.</strong> A route-entry metaphor for the localized opening effect. Conceptual artwork—not a model-state diagram.</figcaption>
-        </figure>
-      </div>
-
-      <div class="mechanism-grid wide-column">
-        <article>
-          <p class="finding-index">Localization</p>
-          <h3>The first token moves most</h3>
-          <p>Mean Jensen-Shannon divergence is largest at the first generated token in every tested model, RLVR branch, and benchmark combination. On AIME, the first-to-interior ratio ranges from 9.8× to 106.7×.</p>
-          <p>High-divergence positions mostly reuse candidates already supported by Base, although IF-RLVR can also promote an initially low-probability opening token.</p>
-        </article>
-        <figure class="scientific-figure compact-figure">
-          <div class="figure-kicker"><span>Figure 6</span><span>Localization</span></div>
-          <a class="figure-link" href="assets/figures/fig6-opening-divergence.svg" data-zoom data-alt="Figure 6 plots next-token Jensen-Shannon divergence by response position, with the largest average divergence at the first generated token across all tested settings." data-caption="Figure 6. RLVR changes next-token distributions most at the response opening.">
-            <img loading="lazy" src="assets/figures/fig6-opening-divergence.svg" width="1000" height="573" alt="Figure 6 plots next-token Jensen-Shannon divergence by response position, with the largest average divergence at the first generated token across all tested settings.">
-            <span class="zoom-hint">Open figure <span aria-hidden="true">↗</span></span>
-          </a>
-          <figcaption><strong>Figure 6.</strong> Position-wise divergence localizes the largest policy shift but does not by itself establish a causal route effect.</figcaption>
-        </figure>
-      </div>
-
-      <div class="evidence-bridge wide-column" role="group" aria-label="Evidence progression from localization to intervention">
-        <span>distribution shift</span>
-        <strong>correlation locates</strong>
-        <svg aria-hidden="true" viewBox="0 0 220 42"><path d="M2 21h196"/><path d="m188 11 11 10-11 10"/><circle cx="48" cy="21" r="4"/><circle cx="110" cy="21" r="4"/><circle cx="170" cy="21" r="4"/></svg>
-        <strong>intervention tests</strong>
-        <span>route entry</span>
-      </div>
-
-      <div class="intervention wide-column">
-        <div class="intervention-copy">
-          <p class="finding-index">Controlled intervention</p>
-          <h3>Changing route entry changes math searchability</h3>
-          <p>From IF-RLVR checkpoints, forcing Base-side or DRI openings raises best@32 for both model families on AIME and MATH-500. A position sweep shows that the route-label effect is concentrated near the response opening.</p>
-          <p class="caveat">The reverse intervention is not symmetric across model families. The evidence supports a causal, localized route-entry effect <em>in the tested settings</em>, not a broad rewrite or erasure of downstream reasoning.</p>
-        </div>
-        <div class="paired-figures">
-          <figure class="scientific-figure">
-            <div class="figure-kicker"><span>Figure 8a</span><span>Route intervention</span></div>
-            <a class="figure-link" href="assets/figures/fig8-opening-intervention-a.svg" data-zoom data-alt="Figure 8a compares math best@32 under free decoding, forced route tokens, and forced DRI or DAI prefixes for Base and IF-RLVR checkpoints across two model families." data-caption="Figure 8a. Forced opening routes change math searchability.">
-              <img loading="lazy" src="assets/figures/fig8-opening-intervention-a.svg" width="1100" height="531" alt="Figure 8a compares math best@32 under free decoding, forced route tokens, and forced DRI or DAI prefixes for Base and IF-RLVR checkpoints across two model families.">
-              <span class="zoom-hint">Open figure <span aria-hidden="true">↗</span></span>
-            </a>
-            <figcaption><strong>Figure 8a.</strong> Free decoding compared with forced route-token and prefix conditions.</figcaption>
-          </figure>
-          <figure class="scientific-figure">
-            <div class="figure-kicker"><span>Figure 8b</span><span>Position sweep</span></div>
-            <a class="figure-link" href="assets/figures/fig8-opening-intervention-b.svg" data-zoom data-alt="Figure 8b sweeps the forced IF-side route token across response positions, showing that DRI suppression occurs near the opening and recovers at later positions." data-caption="Figure 8b. The route effect is concentrated near the response opening.">
-              <img loading="lazy" src="assets/figures/fig8-opening-intervention-b.svg" width="1100" height="465" alt="Figure 8b sweeps the forced IF-side route token across response positions, showing that DRI suppression occurs near the opening and recovers at later positions.">
-              <span class="zoom-hint">Open figure <span aria-hidden="true">↗</span></span>
-            </a>
-            <figcaption><strong>Figure 8b.</strong> The same IF-side token is forced at different decoded positions.</figcaption>
-          </figure>
-        </div>
-      </div>
-    </section>
-
-    <section class="section-space" id="preservation" aria-labelledby="preservation-title">
-      <div class="chapter-tab chapter-tab--green" aria-hidden="true"><span>05</span><small>Preservation</small></div>
-      <p class="margin-note margin-note--green" aria-hidden="true">Partial, conditional, and teacher-state dependent.</p>
-      <div class="intro-grid intro-grid--reverse wide-column">
-        <figure class="editorial-art">
-          <img loading="lazy" src="assets/illustrations/partial-preservation.webp" width="971" height="1619" alt="Hand-drawn editorial illustration of two torn paper fragments joined only partly by green thread.">
-          <figcaption><strong>Editorial interlude.</strong> A stitched-paper metaphor for partial, teacher-dependent preservation. Conceptual artwork—not experimental evidence.</figcaption>
-        </figure>
-        <div class="section-intro">
-          <h2 id="preservation-title">Preservation levers help partially, not uniformly</h2>
-          <p>Sequential training, reference-policy constraints, routing priors, and on-policy distillation each expose a different limit. None is a general solution in the reported experiments.</p>
-        </div>
-      </div>
-
-      <div class="preservation-list wide-column">
-        <article><span>01</span><h3>Sequence matters</h3><p>After IF-first training, the mixed-support group falls from 33.6% to 1.6% by step 20 of Math-RLVR, leaving little within-group reward variation. This path does not prove irreversible loss.</p></article>
-        <article><span>02</span><h3>Reference KL trades objectives</h3><p>During Math→IF training, stronger reference constraints retain more math performance but yield smaller IF gains. No tested coefficient retains math while matching unconstrained IF adaptation.</p></article>
-        <article><span>03</span><h3>Teacher state matters</h3><p>With a converged IF teacher, MATH-500-128 mean@16 falls from 0.3433 to 0.0879 and shortcut responses rise from 4.5% to 18.8%. Across the sampled teachers, teacher and student shifts are negatively associated (Spearman ρ = -0.594); a coarse scan of four earlier states favors different target and retention outcomes.</p></article>
-      </div>
-
-      <div class="preservation-media wide-column">
-        <figure class="scientific-figure">
-          <div class="figure-kicker"><span>Figure 9</span><span>Routing prior</span></div>
-          <a class="figure-link" href="assets/figures/fig9-dri-prior.svg" data-zoom data-alt="Figure 9 shows that a soft DRI-biased prior delays the shift toward DAI openings, but every tested condition reaches a DAI rate of one by training step 100." data-caption="Figure 9. A DRI-biased prior delays but does not prevent DAI dominance in the reported run.">
-            <img loading="lazy" src="assets/figures/fig9-dri-prior.svg" width="1200" height="528" alt="Figure 9 shows that a soft DRI-biased prior delays the shift toward DAI openings, but every tested condition reaches a DAI rate of one by training step 100.">
-            <span class="zoom-hint">Open figure <span aria-hidden="true">↗</span></span>
-          </a>
-          <figcaption><strong>Figure 9.</strong> A one-time DRI prior changes when the observed shift occurs, but not the endpoint route in this run.</figcaption>
-        </figure>
-        <figure class="scientific-figure">
-          <div class="figure-kicker"><span>Figure 11</span><span>Teacher state</span></div>
-          <a class="figure-link" href="assets/figures/fig11-teacher-state.svg" data-zoom data-alt="Figure 11 compares four IF-RLVR teacher checkpoints for on-policy distillation, showing different trade-offs between matched IFEval transfer, MATH-500 retention, and contentful versus shortcut responses." data-caption="Figure 11. Different teacher states favor different OPD outcomes.">
-            <img loading="lazy" src="assets/figures/fig11-teacher-state.svg" width="1200" height="423" alt="Figure 11 compares four IF-RLVR teacher checkpoints for on-policy distillation, showing different trade-offs between matched IFEval transfer, MATH-500 retention, and contentful versus shortcut responses.">
-            <span class="zoom-hint">Open figure <span aria-hidden="true">↗</span></span>
-          </a>
-          <figcaption><strong>Figure 11.</strong> Among four sampled teacher states, T2/40 gives the highest matched IFEval mean@16, while T1/20 is the only student that improves MATH-500 mean@16 (+0.93 pp). This scan does not establish a global optimum.</figcaption>
-        </figure>
-      </div>
-    </section>
-
-    <section class="joint-section section-space" aria-labelledby="joint-title">
-      <div class="chapter-tab chapter-tab--blue" aria-hidden="true"><span>06</span><small>Joint support</small></div>
-      <p class="margin-note margin-note--blue" aria-hidden="true">Marginal improvement is not the same as success in one shared response.</p>
-      <div class="reading-column section-intro">
-        <h2 id="joint-title">Marginal gains combine only partly in one response</h2>
-        <p>MathIF and ReasonIF provide an independent endpoint stress test. Correctness <em>C</em> and strict instruction following <em>F</em> can improve in different responses; joint support requires <em>J = C ∧ F</em> in the same rollout.</p>
-      </div>
-      <section class="table-wrap joint-table wide-column" tabindex="0" aria-label="Marginal and joint support on MathIF and ReasonIF">
-        <table>
-          <caption>Table 3. Marginal and joint support, averaged over 16 rollouts on 290 prompts per benchmark</caption>
-          <thead><tr><th scope="col">Benchmark</th><th scope="col">Checkpoint</th><th scope="col">Correctness C</th><th scope="col">Following F</th><th scope="col">Joint J = C ∧ F</th></tr></thead>
-          <tbody>
-            <tr><th scope="rowgroup" rowspan="3">MathIF</th><td>Base</td><td>0.359</td><td>0.250</td><td>0.094</td></tr>
-            <tr><td>Math-RLVR</td><td><strong>0.472</strong></td><td>0.253</td><td>0.118</td></tr>
-            <tr><td>IF-RLVR</td><td>0.377</td><td><strong>0.431</strong></td><td><strong>0.148</strong></td></tr>
-            <tr><th scope="rowgroup" rowspan="3">ReasonIF</th><td>Base</td><td>0.467</td><td>0.239</td><td>0.109</td></tr>
-            <tr><td>Math-RLVR</td><td><strong>0.522</strong></td><td>0.235</td><td>0.126</td></tr>
-            <tr><td>IF-RLVR</td><td>0.438</td><td><strong>0.391</strong></td><td><strong>0.171</strong></td></tr>
-          </tbody>
-        </table>
-      </section>
-      <p class="reading-column table-note">Target-aligned marginal gains are substantially larger than the resulting joint gains. Improving one verifier does not automatically produce responses that are both correct and constraint-following.</p>
-    </section>
-
-    <section class="implication section-space" aria-labelledby="implication-title">
-      <div class="reading-column">
-        <h2 id="implication-title">Verifier choice is a forward-looking training intervention</h2>
-        <p class="lead">Endpoint performance is not enough to characterize an on-policy training stage. Searchability and reward variation determine what a later verifier can still discover and amplify.</p>
-        <p>Effective rewardable support should be monitored across rollout budgets and plausible future objectives. Preservation methods should be evaluated jointly by target gain, retained cross-verifier support, and response quality—not by the current verifier alone.</p>
-      </div>
-    </section>
-
-    <section class="paper-section section-space" id="paper" aria-labelledby="paper-section-title">
-      <div class="chapter-tab" aria-hidden="true"><span>07</span><small>Paper</small></div>
-      <div class="wide-column paper-layout">
-        <div>
-          <h2 id="paper-section-title">Paper</h2>
-          <p>Verifier-Induced Support Reshaping in On-Policy Optimization</p>
-          <p>arXiv:2608.00220 [cs.LG], with cs.CL as a secondary category. First submitted July 31, 2026.</p>
-          <div class="resource-links">
-            <a href="https://arxiv.org/abs/2608.00220">Abstract</a>
-            <a href="https://arxiv.org/pdf/2608.00220">PDF</a>
-            <a href="https://doi.org/10.48550/arXiv.2608.00220">DOI</a>
-          </div>
-          <p class="correspondence">Correspondence: <a href="mailto:wanghf@pku.edu.cn">Houfeng Wang</a> and <a href="mailto:shaohang@stu.pku.edu.cn">Shaohang Wei</a>.</p>
-        </div>
-        <div id="citation">
-          <div class="citation-heading">
-            <h3>Citation</h3>
-            <button class="copy-button" type="button" data-copy-citation>Copy BibTeX</button>
-          </div>
-          <pre tabindex="0"><code id="bibtex">@misc{wei2026verifier,
+    <p class="reading takeaway"><strong>The implication.</strong> Evaluate more than the endpoint score: inspect reachable successes, the learning signal available after switching objectives, and whether desired behaviors coexist in the same response.</p>
+    <p class="reading scope">Scope: two starting model families and fixed sampling budgets, with one fixed-seed run per configuration. The findings characterize the tested training paths; they do not establish irreversible loss or a universal preservation strategy. Full settings and additional analyses are in the <a href="assets/VISR-technical-report.pdf">technical report</a>.</p>
+  </section>
+  <section class="section citation-section" id="citation">
+    <div class="reading"><div class="citation-heading"><h2>Citation</h2><button type="button" id="copy-citation">Copy BibTeX</button></div>
+      <pre><code id="bibtex">
+@misc{wei2026verifier,
   title         = {Verifier-Induced Support Reshaping in On-Policy Optimization},
   author        = {Shaohang Wei and Zikun Su and Feifan Song and Wen Luo and Wei Li and Guangyue Peng and Houfeng Wang},
   year          = {2026},
@@ -426,105 +185,14 @@
   primaryClass  = {cs.LG},
   doi           = {10.48550/arXiv.2608.00220},
   url           = {https://arxiv.org/abs/2608.00220}
-}</code></pre>
-          <p class="copy-status" role="status" aria-live="polite" data-copy-status></p>
-          <p><a href="citation.bib">Download BibTeX</a> · <a href="https://github.com/sylvain-wei/VISR/blob/main/CITATION.cff">CITATION.cff</a></p>
-        </div>
-      </div>
-    </section>
-
-    <section class="scope-section" id="code" aria-labelledby="scope-title">
-      <div class="wide-column scope-layout">
-        <div>
-          <h2 id="scope-title">Code, scope, and reproducibility</h2>
-          <p>The release supports inspection of training recipes, verifier implementations, evaluation protocols, non-visual analyses, and selected numeric tables. It is not a one-command reproduction of every reported result.</p>
-        </div>
-        <div class="scope-columns">
-          <div>
-            <h3>Included</h3>
-            <ul>
-              <li>verl/DAPO framework snapshot and reference recipes</li>
-              <li>Evaluation, verifier, aggregation, and unit-test code</li>
-              <li>Selected paper tables and curated static figures</li>
-            </ul>
-          </div>
-          <div>
-            <h3>Not included</h3>
-            <ul>
-              <li>Fine-tuned checkpoints and generated rollouts</li>
-              <li>Raw experiment logs and most intermediate CSVs</li>
-              <li>Site-specific launchers and general figure-rendering code</li>
-            </ul>
-          </div>
-        </div>
-        <div class="resource-links scope-links">
-          <a href="https://github.com/sylvain-wei/VISR">Repository</a>
-          <a href="https://github.com/sylvain-wei/VISR/blob/main/REPRODUCIBILITY.md">Reproducibility matrix</a>
-          <a href="https://github.com/sylvain-wei/VISR/tree/main/eval/configs">Evaluation configs</a>
-          <a href="https://github.com/sylvain-wei/VISR/tree/main/analysis/paper/tables">Released tables</a>
-          <a href="https://github.com/sylvain-wei/VISR/blob/main/LICENSE">Code license</a>
-          <a href="https://github.com/sylvain-wei/VISR/blob/main/THIRD_PARTY_NOTICES.md">Third-party notices</a>
-        </div>
-      </div>
-    </section>
-
-    <aside class="paper-fragments" aria-label="Interactive excerpts from the paper">
-      <blockquote class="paper-fragment paper-fragment--right paper-fragment--burgundy" style="--fragment-top: 3.2%; --fragment-rotate: 6deg; --fragment-height: 235px;" data-fragment-id="support" data-fragment-source="Overview">
-        <p>A capability can remain possible in principle yet become too rare to appear within the rollouts available to the next on-policy stage.</p>
-        <cite>Overview · effective support</cite>
-      </blockquote>
-      <blockquote class="paper-fragment paper-fragment--left paper-fragment--math" style="--fragment-top: 13.5%; --fragment-rotate: -7deg; --fragment-height: 205px;" data-fragment-id="budget" data-fragment-source="Definition">
-        <p>Effective rewardable support is defined relative to a finite rollout budget: success must remain discoverable under sampling.</p>
-        <cite>Definition · rollout budget B</cite>
-      </blockquote>
-      <blockquote class="paper-fragment paper-fragment--right paper-fragment--support" style="--fragment-top: 25%; --fragment-rotate: -5deg; --fragment-height: 230px;" data-fragment-id="polarization" data-fragment-source="Figure 2">
-        <p>Math-RLVR moves mixed instruction-following prompts toward both extremes. Average success rises while repeated-sampling coverage falls.</p>
-        <cite>Figure 2 · polarization</cite>
-      </blockquote>
-      <blockquote class="paper-fragment paper-fragment--left paper-fragment--warm" style="--fragment-top: 36%; --fragment-rotate: 8deg; --fragment-height: 190px;" data-fragment-id="searchability" data-fragment-source="Figure 3">
-        <p>Across checkpoints, DAI share and AIME best@32 have Pearson r = −0.85. This is behavioral correlation, not causal evidence.</p>
-        <cite>Figure 3 · correlation</cite>
-      </blockquote>
-      <blockquote class="paper-fragment paper-fragment--right paper-fragment--math" style="--fragment-top: 47.5%; --fragment-rotate: 7deg; --fragment-height: 215px;" data-fragment-id="opening" data-fragment-source="Figure 6">
-        <p>The first generated token carries the largest average Jensen–Shannon divergence across every tested model, branch, and benchmark.</p>
-        <cite>Figure 6 · route entry</cite>
-      </blockquote>
-      <blockquote class="paper-fragment paper-fragment--left paper-fragment--burgundy" style="--fragment-top: 58%; --fragment-rotate: -6deg; --fragment-height: 235px;" data-fragment-id="intervention" data-fragment-source="Figure 8">
-        <p>Controlled route-token and prefix interventions change math searchability, localizing a causal route-entry effect in the tested settings.</p>
-        <cite>Figure 8 · intervention</cite>
-      </blockquote>
-      <blockquote class="paper-fragment paper-fragment--right paper-fragment--support" style="--fragment-top: 69.5%; --fragment-rotate: -8deg; --fragment-height: 205px;" data-fragment-id="preservation" data-fragment-source="Preservation experiments">
-        <p>Preservation is partial, conditional, and teacher-state dependent. Endpoint target gain alone does not characterize retained support.</p>
-        <cite>Preservation · tested limits</cite>
-      </blockquote>
-      <blockquote class="paper-fragment paper-fragment--left paper-fragment--math" style="--fragment-top: 81%; --fragment-rotate: 5deg; --fragment-height: 210px;" data-fragment-id="joint" data-fragment-source="Table 3">
-        <p>Joint support requires correctness and strict instruction following in the same response: J = C ∧ F.</p>
-        <cite>Table 3 · joint support</cite>
-      </blockquote>
-      <blockquote class="paper-fragment paper-fragment--right paper-fragment--warm" style="--fragment-top: 91.5%; --fragment-rotate: 6deg; --fragment-height: 230px;" data-fragment-id="conclusion" data-fragment-source="Conclusion">
-        <p>Verifier choice is a forward-looking training intervention. It changes which behaviors remain reachable, rewardable, and trainable next.</p>
-        <cite>Conclusion · future trainability</cite>
-      </blockquote>
-      <p class="visually-hidden" aria-live="polite" data-fragment-status></p>
-    </aside>
-  </main>
-
-  <footer class="site-footer">
-    <div class="wide-column footer-layout">
-      <p><strong>Verifier-Induced Support Reshaping in On-Policy Optimization</strong><br>Peking University · BUPT</p>
-      <p><a href="https://arxiv.org/abs/2608.00220">arXiv</a> · <a href="https://github.com/sylvain-wei/VISR">GitHub</a></p>
-      <p class="license-note">Code and site text: Apache-2.0. Paper figures: CC BY 4.0. The PKU mark is excluded from the repository license; generated editorial interludes are conceptual, not scientific figures. See <a href="assets/README.md">asset provenance</a>.</p>
+}
+</code></pre>
+      <p id="copy-status" class="copy-status" role="status" aria-live="polite"></p>
     </div>
-  </footer>
-
-  <dialog class="figure-dialog" data-figure-dialog aria-labelledby="figure-dialog-caption">
-    <div class="dialog-bar">
-      <p id="figure-dialog-caption" data-dialog-caption></p>
-      <button type="button" data-dialog-close>Close</button>
-    </div>
-    <div class="dialog-media"><img src="assets/figures/fig1-overview.svg" data-dialog-image alt="Expanded paper figure"></div>
-  </dialog>
-
-  <script src="script.js" defer></script>
+  </section>
+</main>
+<footer><p>VISR · <a href="https://arxiv.org/abs/2608.00220">Paper</a> · <a href="https://github.com/sylvain-wei/VISR">Code</a></p><p class="site-credit">Page layout inspired by <a href="https://le-wm.github.io/">LeWorldModel</a>.</p></footer>
+<dialog class="figure-dialog" aria-labelledby="dialog-title"><div class="dialog-header"><p id="dialog-title">Paper figure</p><button type="button" id="close-figure" autofocus>Close <span aria-hidden="true">×</span></button></div><div class="dialog-media"><img alt="" id="dialog-image"></div><p class="dialog-hint">Scroll to inspect · Escape to close</p></dialog>
+<script src="script.js" defer></script>
 </body>
 </html>
