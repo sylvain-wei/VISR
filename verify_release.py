@@ -38,7 +38,7 @@ REQUIRED = (
 )
 JUNK_NAMES = {".DS_Store", "Thumbs.db", "tea_debug.log"}
 JUNK_SUFFIXES = {".pyc", ".pyo", ".swp"}
-IMAGE_SUFFIXES = {".png", ".jpg", ".jpeg", ".webp", ".svg", ".pdf"}
+IMAGE_SUFFIXES = {".png", ".jpg", ".jpeg", ".webp", ".svg", ".pdf", ".gif"}
 VISUAL_TOKENS = (
     "matplotlib",
     "seaborn",
@@ -77,6 +77,8 @@ DOC_IMAGE_ALLOWLIST = frozenset(
         "docs/assets/illustrations/opening-route.webp",
         "docs/assets/illustrations/partial-preservation.webp",
         "docs/assets/figures/fig1-overview.svg",
+        "docs/assets/figures/fig1-overview-animated.svg",
+        "docs/assets/figures/fig1-overview-animated.gif",
         "docs/assets/figures/fig2-if-polarization.svg",
         "docs/assets/figures/fig3-math-searchability.svg",
         "docs/assets/figures/fig6-opening-divergence.svg",

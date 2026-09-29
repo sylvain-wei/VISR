@@ -3,12 +3,12 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>VISR — Verifier-Induced Support Reshaping</title>
+  <title>Verifier-Induced Support Reshaping in On-Policy Optimization</title>
   <meta name="description" content="Project page for Verifier-Induced Support Reshaping in On-Policy Optimization, an arXiv preprint on how on-policy verifiers reshape future trainability.">
   <link rel="canonical" href="https://sylvain-wei.github.io/VISR/">
   <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
   <link rel="preload" href="assets/fonts/cmu-serif-500-roman.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="styles.css?v=20260930">
 
   <meta property="og:title" content="Verifier-Induced Support Reshaping in On-Policy Optimization">
   <meta property="og:description" content="On-policy verifiers reshape which behaviors remain reachable, rewardable, and trainable next.">
@@ -67,7 +67,6 @@
 <a class="skip-link" href="#main-content">Skip to content</a>
 <header class="hero" id="overview">
   <div class="container">
-    <p class="project-name">VISR</p>
     <h1>Verifier-Induced Support Reshaping<br class="desktop-break"> in On-Policy Optimization</h1>
     <div class="authors" aria-label="Authors">
       <span><a href="https://sylvain-wei.github.io/">Shaohang Wei</a><sup>1,‡</sup></span><span>Zikun Su<sup>2</sup></span><span>Feifan Song<sup>1</sup></span><span>Wen Luo<sup>1</sup></span><span>Wei Li<sup>1</sup></span><span>Guangyue Peng<sup>1</sup></span><span>Houfeng Wang<sup>1,†</sup></span>
@@ -81,9 +80,21 @@
 </header>
 <main id="main-content">
   <section class="overview container" aria-label="Research overview">
-<figure class="paper-figure">
-    <a class="figure-link" href="assets/figures/fig1-overview.svg" data-zoom aria-label="Enlarge: Overview of verifier-induced support reshaping: a finite rollout budget connects the current verifier to future training support."><img src="assets/figures/fig1-overview.svg" alt="Overview of verifier-induced support reshaping: a finite rollout budget connects the current verifier to future training support." fetchpriority="high" width="167.04" height="66" decoding="async"></a>
-    <figcaption><span><strong>What remains learnable next?</strong> A verifier changes which successful responses future on-policy training can still sample and reinforce.</span><span class="figure-downloads"><a href="assets/figures/fig1-overview.pdf" target="_blank" rel="noopener" aria-label="PDF: overview">PDF ↗</a><a href="assets/figures/fig1-overview.svg" target="_blank" rel="noopener" aria-label="SVG: overview">SVG ↗</a></span></figcaption>
+<figure class="paper-figure overview-figure" data-overview-animation data-timeline="assets/figures/fig1-overview-timeline.json">
+    <div class="overview-animation-frame">
+      <object id="overview-animation-object" class="overview-animation-object" type="image/svg+xml" data="assets/figures/fig1-overview-animated.svg" role="img" tabindex="-1" aria-label="Animated overview of verifier-induced support reshaping: a finite rollout budget connects the current verifier to future training support.">
+        <img src="assets/figures/fig1-overview.svg" alt="Overview of verifier-induced support reshaping: a finite rollout budget connects the current verifier to future training support." width="16704" height="6600">
+      </object>
+      <a class="figure-link overview-static-fallback" href="assets/figures/fig1-overview.svg" target="_blank" rel="noopener" hidden aria-label="Enlarge the complete overview in a new tab"><img src="assets/figures/fig1-overview.svg" alt="Overview of verifier-induced support reshaping: a finite rollout budget connects the current verifier to future training support." width="16704" height="6600" decoding="async"></a>
+    </div>
+    <div class="overview-animation-controls" role="group" aria-label="Overview animation controls" hidden>
+      <button type="button" id="overview-toggle" aria-controls="overview-animation-object" aria-label="Pause overview animation">Pause</button>
+      <button type="button" id="overview-replay" aria-controls="overview-animation-object" aria-label="Replay overview animation">Replay</button>
+      <button type="button" id="overview-show-all" aria-controls="overview-animation-object">Show all</button>
+    </div>
+    <p class="overview-animation-status" role="status" aria-live="polite" aria-atomic="true"></p>
+    <noscript><style>.overview-animation-object{display:none!important}.overview-static-fallback[hidden]{display:block!important}</style></noscript>
+    <figcaption><span><strong>What remains learnable next?</strong> A verifier changes which successful responses future on-policy training can still sample and reinforce.</span><span class="figure-downloads"><a href="assets/figures/fig1-overview.svg" data-zoom data-figure-alt="Complete overview of verifier-induced support reshaping." aria-label="Enlarge the complete overview">Enlarge ↗</a><a href="assets/figures/fig1-overview.pdf" target="_blank" rel="noopener" aria-label="PDF: overview">PDF ↗</a><a href="assets/figures/fig1-overview.svg" target="_blank" rel="noopener" aria-label="SVG: overview">SVG ↗</a><a href="assets/figures/fig1-overview-animated.gif" download aria-label="Download animated overview as GIF">GIF ↓</a></span></figcaption>
   </figure>
 
   </section>
@@ -191,8 +202,9 @@
     </div>
   </section>
 </main>
-<footer><p>VISR · <a href="https://arxiv.org/abs/2608.00220">Paper</a> · <a href="https://github.com/sylvain-wei/VISR">Code</a></p><p class="site-credit">Page layout inspired by <a href="https://le-wm.github.io/">LeWorldModel</a>.</p></footer>
+<footer><p><a href="https://arxiv.org/abs/2608.00220">Paper</a> · <a href="https://github.com/sylvain-wei/VISR">Code</a></p><p class="site-credit">Page layout inspired by <a href="https://le-wm.github.io/">LeWorldModel</a>.</p></footer>
 <dialog class="figure-dialog" aria-labelledby="dialog-title"><div class="dialog-header"><p id="dialog-title">Paper figure</p><button type="button" id="close-figure" autofocus>Close <span aria-hidden="true">×</span></button></div><div class="dialog-media"><img alt="" id="dialog-image"></div><p class="dialog-hint">Scroll to inspect · Escape to close</p></dialog>
-<script src="script.js" defer></script>
+<script src="script.js?v=20260930" defer></script>
+<script src="overview-animation.js?v=20260930" defer></script>
 </body>
 </html>

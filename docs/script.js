@@ -40,7 +40,7 @@
       returnFocus = link;
       const original = link.querySelector('img');
       dialogImage.src = link.href;
-      dialogImage.alt = original.alt;
+      dialogImage.alt = original ? original.alt : (link.dataset.figureAlt || 'Paper figure');
       dialogTitle.textContent = link.closest('figure').querySelector('figcaption > span').textContent;
       dialog.showModal();
       dialog.querySelector('.dialog-media').scrollTo(0, 0);

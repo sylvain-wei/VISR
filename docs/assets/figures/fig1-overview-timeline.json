@@ -1,0 +1,2357 @@
+{
+  "durationMs": 18800,
+  "completeAtMs": 15200,
+  "finalHoldMs": 3600,
+  "stages": {
+    "title-continual": {
+      "startMs": 0,
+      "revealMs": 0,
+      "mode": "fade"
+    },
+    "title-if": {
+      "startMs": 0,
+      "revealMs": 0,
+      "mode": "fade"
+    },
+    "title-math": {
+      "startMs": 0,
+      "revealMs": 0,
+      "mode": "fade"
+    },
+    "plot-general": {
+      "startMs": 850,
+      "revealMs": 450,
+      "mode": "fade"
+    },
+    "plot-shift": {
+      "startMs": 1450,
+      "revealMs": 450,
+      "mode": "fade"
+    },
+    "plot-future": {
+      "startMs": 2050,
+      "revealMs": 450,
+      "mode": "fade"
+    },
+    "looking-back": {
+      "startMs": 2950,
+      "revealMs": 500,
+      "mode": "fade"
+    },
+    "back-training": {
+      "startMs": 3250,
+      "revealMs": 700,
+      "mode": "right"
+    },
+    "back-decline": {
+      "startMs": 4000,
+      "revealMs": 400,
+      "mode": "down"
+    },
+    "forward-context": {
+      "startMs": 4700,
+      "revealMs": 350,
+      "mode": "fade"
+    },
+    "token-before-context": {
+      "startMs": 5100,
+      "revealMs": 350,
+      "mode": "fade"
+    },
+    "token-before-root": {
+      "startMs": 5550,
+      "revealMs": 220,
+      "mode": "fade"
+    },
+    "token-before-branches": {
+      "startMs": 5850,
+      "revealMs": 600,
+      "mode": "down"
+    },
+    "token-before-other": {
+      "startMs": 6000,
+      "revealMs": 550,
+      "mode": "down"
+    },
+    "before-middle": {
+      "startMs": 6450,
+      "revealMs": 180,
+      "mode": "fade"
+    },
+    "before-links-target": {
+      "startMs": 6600,
+      "revealMs": 450,
+      "mode": "down"
+    },
+    "token-before-target": {
+      "startMs": 7080,
+      "revealMs": 200,
+      "mode": "fade"
+    },
+    "token-after-context": {
+      "startMs": 7500,
+      "revealMs": 300,
+      "mode": "fade"
+    },
+    "token-after-root": {
+      "startMs": 7900,
+      "revealMs": 200,
+      "mode": "fade"
+    },
+    "token-after-muted": {
+      "startMs": 8200,
+      "revealMs": 600,
+      "mode": "down"
+    },
+    "token-after-red": {
+      "startMs": 8200,
+      "revealMs": 600,
+      "mode": "down"
+    },
+    "after-middle": {
+      "startMs": 8800,
+      "revealMs": 150,
+      "mode": "fade"
+    },
+    "after-links-target": {
+      "startMs": 8920,
+      "revealMs": 400,
+      "mode": "down"
+    },
+    "token-after-target": {
+      "startMs": 9350,
+      "revealMs": 200,
+      "mode": "fade"
+    },
+    "prob-before": {
+      "startMs": 9800,
+      "revealMs": 400,
+      "mode": "up"
+    },
+    "prob-after": {
+      "startMs": 10300,
+      "revealMs": 450,
+      "mode": "up"
+    },
+    "prob-change": {
+      "startMs": 10800,
+      "revealMs": 400,
+      "mode": "down"
+    },
+    "support-zoom-links": {
+      "startMs": 11300,
+      "revealMs": 450,
+      "mode": "right"
+    },
+    "support-frame": {
+      "startMs": 11550,
+      "revealMs": 350,
+      "mode": "fade"
+    },
+    "support-base": {
+      "startMs": 12000,
+      "revealMs": 450,
+      "mode": "fade"
+    },
+    "if-arrow": {
+      "startMs": 12700,
+      "revealMs": 550,
+      "mode": "left"
+    },
+    "support-if": {
+      "startMs": 13100,
+      "revealMs": 400,
+      "mode": "fade"
+    },
+    "if-box": {
+      "startMs": 13100,
+      "revealMs": 500,
+      "mode": "fade"
+    },
+    "math-arrow": {
+      "startMs": 13900,
+      "revealMs": 550,
+      "mode": "left"
+    },
+    "support-math": {
+      "startMs": 14300,
+      "revealMs": 400,
+      "mode": "fade"
+    },
+    "math-box": {
+      "startMs": 14300,
+      "revealMs": 500,
+      "mode": "fade"
+    },
+    "summary": {
+      "startMs": 14800,
+      "revealMs": 400,
+      "mode": "fade"
+    },
+    "finish": {
+      "startMs": 14800,
+      "revealMs": 400,
+      "mode": "fade"
+    },
+    "token-head-0": {
+      "startMs": 6380,
+      "revealMs": 70,
+      "mode": "fade"
+    },
+    "token-head-1": {
+      "startMs": 6380,
+      "revealMs": 70,
+      "mode": "fade"
+    },
+    "token-head-2": {
+      "startMs": 6380,
+      "revealMs": 70,
+      "mode": "fade"
+    },
+    "token-head-3": {
+      "startMs": 6980,
+      "revealMs": 70,
+      "mode": "fade"
+    },
+    "token-head-4": {
+      "startMs": 6980,
+      "revealMs": 70,
+      "mode": "fade"
+    },
+    "token-head-5": {
+      "startMs": 8730,
+      "revealMs": 70,
+      "mode": "fade"
+    },
+    "token-head-6": {
+      "startMs": 8730,
+      "revealMs": 70,
+      "mode": "fade"
+    },
+    "token-head-7": {
+      "startMs": 9250,
+      "revealMs": 70,
+      "mode": "fade"
+    },
+    "token-head-8": {
+      "startMs": 8730,
+      "revealMs": 70,
+      "mode": "fade"
+    },
+    "token-head-9": {
+      "startMs": 8730,
+      "revealMs": 70,
+      "mode": "fade"
+    },
+    "token-head-10": {
+      "startMs": 8730,
+      "revealMs": 70,
+      "mode": "fade"
+    },
+    "token-head-11": {
+      "startMs": 9250,
+      "revealMs": 70,
+      "mode": "fade"
+    },
+    "token-head-12": {
+      "startMs": 9250,
+      "revealMs": 70,
+      "mode": "fade"
+    },
+    "if-arrowhead": {
+      "startMs": 13200,
+      "revealMs": 100,
+      "mode": "fade"
+    },
+    "math-arrowhead": {
+      "startMs": 14400,
+      "revealMs": 100,
+      "mode": "fade"
+    }
+  },
+  "sequence": [
+    "headings",
+    "three plots from left to right",
+    "looking back: catastrophic forgetting",
+    "looking forward: token support before and after training",
+    "sampling probabilities and probability changes",
+    "magnified support frame",
+    "base-policy support",
+    "IF-RLVR direction and support",
+    "Math-RLVR direction and support",
+    "complete figure"
+  ],
+  "schemaVersion": 1,
+  "source": "fig1-overview.svg",
+  "sourceSha256": "e79e5dd3029a814b075bdacd88ba598903762f5928de54cb845193948acb3cc4",
+  "animatedSvg": "fig1-overview-animated.svg",
+  "gif": "fig1-overview-animated.gif",
+  "originalViewBox": [
+    0,
+    0,
+    167.04,
+    66
+  ],
+  "parts": [
+    {
+      "id": "visr-part-0",
+      "stage": "support-frame",
+      "group": 0,
+      "startChild": 0,
+      "endChild": 2,
+      "bbox": [
+        77.409,
+        39.681,
+        132.692,
+        64.113
+      ],
+      "clipId": null
+    },
+    {
+      "id": "visr-part-1",
+      "stage": "support-base",
+      "group": 1,
+      "startChild": 0,
+      "endChild": 128,
+      "bbox": [
+        122.899,
+        43.900999999999996,
+        128.781,
+        46.593
+      ],
+      "clipId": null
+    },
+    {
+      "id": "visr-part-2",
+      "stage": "support-math",
+      "group": 2,
+      "startChild": 0,
+      "endChild": 128,
+      "bbox": [
+        90.405,
+        54.278,
+        103.19,
+        58.88
+      ],
+      "clipId": null
+    },
+    {
+      "id": "visr-part-3",
+      "stage": "support-if",
+      "group": 3,
+      "startChild": 0,
+      "endChild": 128,
+      "bbox": [
+        81.42,
+        43.611,
+        104.389,
+        47.413000000000004
+      ],
+      "clipId": null
+    },
+    {
+      "id": "visr-part-4",
+      "stage": "support-math",
+      "group": 4,
+      "startChild": 0,
+      "endChild": 1,
+      "bbox": [
+        90.393,
+        54.607,
+        100.859,
+        58.573
+      ],
+      "clipId": null
+    },
+    {
+      "id": "visr-part-5",
+      "stage": "support-math",
+      "group": 5,
+      "startChild": 0,
+      "endChild": 1,
+      "bbox": [
+        91.117,
+        54.897,
+        99.89,
+        58.302
+      ],
+      "clipId": null
+    },
+    {
+      "id": "visr-part-6",
+      "stage": "support-math",
+      "group": 6,
+      "startChild": 0,
+      "endChild": 1,
+      "bbox": [
+        91.792,
+        55.314,
+        98.448,
+        58.051
+      ],
+      "clipId": null
+    },
+    {
+      "id": "visr-part-7",
+      "stage": "support-math",
+      "group": 7,
+      "startChild": 0,
+      "endChild": 1,
+      "bbox": [
+        92.58300000000001,
+        55.772999999999996,
+        97.15899999999999,
+        57.762
+      ],
+      "clipId": null
+    },
+    {
+      "id": "visr-part-8",
+      "stage": "support-math",
+      "group": 8,
+      "startChild": 0,
+      "endChild": 1,
+      "bbox": [
+        93.46900000000001,
+        56.059,
+        96.37599999999999,
+        57.466
+      ],
+      "clipId": null
+    },
+    {
+      "id": "visr-part-9",
+      "stage": "support-math",
+      "group": 9,
+      "startChild": 0,
+      "endChild": 1,
+      "bbox": [
+        89.01400000000001,
+        54.082,
+        103.69,
+        59.145
+      ],
+      "clipId": null
+    },
+    {
+      "id": "visr-part-10",
+      "stage": "support-math",
+      "group": 10,
+      "startChild": 0,
+      "endChild": 1,
+      "bbox": [
+        89.444,
+        54.228,
+        102.27,
+        58.981
+      ],
+      "clipId": null
+    },
+    {
+      "id": "visr-part-11",
+      "stage": "support-math",
+      "group": 11,
+      "startChild": 0,
+      "endChild": 1,
+      "bbox": [
+        90.337,
+        54.551,
+        100.91399999999999,
+        58.628
+      ],
+      "clipId": null
+    },
+    {
+      "id": "visr-part-12",
+      "stage": "support-math",
+      "group": 12,
+      "startChild": 0,
+      "endChild": 1,
+      "bbox": [
+        91.06200000000001,
+        54.842,
+        99.945,
+        58.357
+      ],
+      "clipId": null
+    },
+    {
+      "id": "visr-part-13",
+      "stage": "support-math",
+      "group": 13,
+      "startChild": 0,
+      "endChild": 1,
+      "bbox": [
+        91.736,
+        55.257999999999996,
+        98.503,
+        58.107
+      ],
+      "clipId": null
+    },
+    {
+      "id": "visr-part-14",
+      "stage": "support-math",
+      "group": 14,
+      "startChild": 0,
+      "endChild": 1,
+      "bbox": [
+        92.528,
+        55.717999999999996,
+        97.214,
+        57.818000000000005
+      ],
+      "clipId": null
+    },
+    {
+      "id": "visr-part-15",
+      "stage": "support-math",
+      "group": 15,
+      "startChild": 0,
+      "endChild": 1,
+      "bbox": [
+        93.414,
+        56.004,
+        96.43199999999999,
+        57.522
+      ],
+      "clipId": null
+    },
+    {
+      "id": "visr-part-16",
+      "stage": "support-if",
+      "group": 16,
+      "startChild": 0,
+      "endChild": 1,
+      "bbox": [
+        85.07700000000001,
+        43.217,
+        104.78399999999999,
+        46.827
+      ],
+      "clipId": null
+    },
+    {
+      "id": "visr-part-17",
+      "stage": "support-if",
+      "group": 17,
+      "startChild": 0,
+      "endChild": 1,
+      "bbox": [
+        87.31500000000001,
+        43.471,
+        103.768,
+        46.472
+      ],
+      "clipId": null
+    },
+    {
+      "id": "visr-part-18",
+      "stage": "support-if",
+      "group": 18,
+      "startChild": 0,
+      "endChild": 1,
+      "bbox": [
+        91.331,
+        43.717,
+        102.71799999999999,
+        46.21
+      ],
+      "clipId": null
+    },
+    {
+      "id": "visr-part-19",
+      "stage": "support-if",
+      "group": 19,
+      "startChild": 0,
+      "endChild": 1,
+      "bbox": [
+        93.617,
+        44.003,
+        101.411,
+        45.910000000000004
+      ],
+      "clipId": null
+    },
+    {
+      "id": "visr-part-20",
+      "stage": "support-if",
+      "group": 20,
+      "startChild": 0,
+      "endChild": 1,
+      "bbox": [
+        95.51100000000001,
+        44.265,
+        100.086,
+        45.637
+      ],
+      "clipId": null
+    },
+    {
+      "id": "visr-part-21",
+      "stage": "support-if",
+      "group": 21,
+      "startChild": 0,
+      "endChild": 1,
+      "bbox": [
+        80.001,
+        42.708,
+        106.51599999999999,
+        47.870000000000005
+      ],
+      "clipId": null
+    },
+    {
+      "id": "visr-part-22",
+      "stage": "support-if",
+      "group": 22,
+      "startChild": 0,
+      "endChild": 1,
+      "bbox": [
+        80.95800000000001,
+        42.876,
+        105.88199999999999,
+        47.566
+      ],
+      "clipId": null
+    },
+    {
+      "id": "visr-part-23",
+      "stage": "support-if",
+      "group": 23,
+      "startChild": 0,
+      "endChild": 1,
+      "bbox": [
+        85.021,
+        43.162,
+        104.83999999999999,
+        46.882
+      ],
+      "clipId": null
+    },
+    {
+      "id": "visr-part-24",
+      "stage": "support-if",
+      "group": 24,
+      "startChild": 0,
+      "endChild": 1,
+      "bbox": [
+        87.26,
+        43.416,
+        103.824,
+        46.527
+      ],
+      "clipId": null
+    },
+    {
+      "id": "visr-part-25",
+      "stage": "support-if",
+      "group": 25,
+      "startChild": 0,
+      "endChild": 1,
+      "bbox": [
+        91.27600000000001,
+        43.662,
+        102.773,
+        46.265
+      ],
+      "clipId": null
+    },
+    {
+      "id": "visr-part-26",
+      "stage": "support-if",
+      "group": 26,
+      "startChild": 0,
+      "endChild": 1,
+      "bbox": [
+        93.561,
+        43.948,
+        101.466,
+        45.965
+      ],
+      "clipId": null
+    },
+    {
+      "id": "visr-part-27",
+      "stage": "support-if",
+      "group": 27,
+      "startChild": 0,
+      "endChild": 1,
+      "bbox": [
+        95.45500000000001,
+        44.21,
+        100.142,
+        45.693000000000005
+      ],
+      "clipId": null
+    },
+    {
+      "id": "visr-part-28",
+      "stage": "support-base",
+      "group": 28,
+      "startChild": 0,
+      "endChild": 1,
+      "bbox": [
+        125.38300000000001,
+        44.400999999999996,
+        127.14399999999999,
+        46.162
+      ],
+      "clipId": null
+    },
+    {
+      "id": "visr-part-29",
+      "stage": "support-math",
+      "group": 29,
+      "startChild": 0,
+      "endChild": 1,
+      "bbox": [
+        94.551,
+        55.717999999999996,
+        96.312,
+        57.480000000000004
+      ],
+      "clipId": null
+    },
+    {
+      "id": "visr-part-30",
+      "stage": "support-if",
+      "group": 30,
+      "startChild": 0,
+      "endChild": 1,
+      "bbox": [
+        94.911,
+        44.205,
+        96.672,
+        45.966
+      ],
+      "clipId": null
+    },
+    {
+      "id": "visr-part-31",
+      "stage": "math-arrow",
+      "group": 31,
+      "startChild": 0,
+      "endChild": 1,
+      "bbox": [
+        96.489,
+        45.358,
+        125.339,
+        56.473
+      ],
+      "clipId": "visr-reveal-31"
+    },
+    {
+      "id": "visr-part-32",
+      "stage": "math-arrowhead",
+      "group": 31,
+      "startChild": 1,
+      "endChild": 2,
+      "bbox": [
+        96.489,
+        55.336,
+        97.73899999999999,
+        56.52
+      ],
+      "clipId": null
+    },
+    {
+      "id": "visr-part-33",
+      "stage": "if-arrow",
+      "group": 31,
+      "startChild": 2,
+      "endChild": 3,
+      "bbox": [
+        96.94500000000001,
+        44.681,
+        125.255,
+        45.686
+      ],
+      "clipId": "visr-reveal-33"
+    },
+    {
+      "id": "visr-part-34",
+      "stage": "if-arrowhead",
+      "group": 31,
+      "startChild": 3,
+      "endChild": 4,
+      "bbox": [
+        96.94500000000001,
+        44.494,
+        98.154,
+        45.702
+      ],
+      "clipId": null
+    },
+    {
+      "id": "visr-part-35",
+      "stage": "support-math",
+      "group": 31,
+      "startChild": 4,
+      "endChild": 7,
+      "bbox": [
+        94.125,
+        46.647999999999996,
+        95.75399999999999,
+        55.375
+      ],
+      "clipId": null
+    },
+    {
+      "id": "visr-part-36",
+      "stage": "support-if",
+      "group": 31,
+      "startChild": 7,
+      "endChild": 49,
+      "bbox": [
+        80.182,
+        40.102,
+        99.199,
+        43.829
+      ],
+      "clipId": null
+    },
+    {
+      "id": "visr-part-37",
+      "stage": "support-math",
+      "group": 31,
+      "startChild": 49,
+      "endChild": 98,
+      "bbox": [
+        80.182,
+        58.561,
+        104.098,
+        62.288000000000004
+      ],
+      "clipId": null
+    },
+    {
+      "id": "visr-part-38",
+      "stage": "support-base",
+      "group": 31,
+      "startChild": 98,
+      "endChild": 126,
+      "bbox": [
+        117.71100000000001,
+        48.009,
+        128.965,
+        51.753
+      ],
+      "clipId": null
+    },
+    {
+      "id": "visr-part-39",
+      "stage": "support-math",
+      "group": 31,
+      "startChild": 126,
+      "endChild": 135,
+      "bbox": [
+        107.334,
+        51.725,
+        115.128,
+        55.781
+      ],
+      "clipId": null
+    },
+    {
+      "id": "visr-part-40",
+      "stage": "support-if",
+      "group": 31,
+      "startChild": 135,
+      "endChild": 142,
+      "bbox": [
+        107.465,
+        47.019999999999996,
+        113.434,
+        48.771
+      ],
+      "clipId": null
+    },
+    {
+      "id": "visr-part-41",
+      "stage": "support-frame",
+      "group": 32,
+      "startChild": 0,
+      "endChild": 1,
+      "bbox": [
+        73.414,
+        34.144,
+        132.171,
+        66.774
+      ],
+      "clipId": null
+    },
+    {
+      "id": "visr-part-42",
+      "stage": "summary",
+      "group": 32,
+      "startChild": 1,
+      "endChild": 3,
+      "bbox": [
+        1.1190000000000002,
+        58.357,
+        70.77,
+        66.48599999999999
+      ],
+      "clipId": null
+    },
+    {
+      "id": "visr-part-43",
+      "stage": "if-box",
+      "group": 32,
+      "startChild": 3,
+      "endChild": 5,
+      "bbox": [
+        134.405,
+        37.308,
+        167.423,
+        66.774
+      ],
+      "clipId": null
+    },
+    {
+      "id": "visr-part-44",
+      "stage": "math-box",
+      "group": 32,
+      "startChild": 5,
+      "endChild": 83,
+      "bbox": [
+        134.16,
+        2.501,
+        166.704,
+        30.097
+      ],
+      "clipId": null
+    },
+    {
+      "id": "visr-part-47",
+      "stage": "if-box",
+      "group": 32,
+      "startChild": 101,
+      "endChild": 135,
+      "bbox": [
+        140.287,
+        41.707,
+        163.027,
+        46.879000000000005
+      ],
+      "clipId": null
+    },
+    {
+      "id": "visr-part-48",
+      "stage": "math-box",
+      "group": 32,
+      "startChild": 135,
+      "endChild": 136,
+      "bbox": [
+        137.238,
+        7.226,
+        141.232,
+        11.219999999999999
+      ],
+      "clipId": null
+    },
+    {
+      "id": "visr-part-49",
+      "stage": "if-box",
+      "group": 32,
+      "startChild": 136,
+      "endChild": 188,
+      "bbox": [
+        137.08,
+        41.119,
+        164.302,
+        61.812000000000005
+      ],
+      "clipId": null
+    },
+    {
+      "id": "visr-part-50",
+      "stage": "math-box",
+      "group": 33,
+      "startChild": 0,
+      "endChild": 2,
+      "bbox": [
+        142.572,
+        18.362,
+        144.47799999999998,
+        20.897000000000002
+      ],
+      "clipId": null
+    },
+    {
+      "id": "visr-part-51",
+      "stage": "if-box",
+      "group": 34,
+      "startChild": 0,
+      "endChild": 2,
+      "bbox": [
+        163.3,
+        48.339999999999996,
+        165.91299999999998,
+        54.397
+      ],
+      "clipId": null
+    },
+    {
+      "id": "visr-part-52",
+      "stage": "math-box",
+      "group": 34,
+      "startChild": 2,
+      "endChild": 4,
+      "bbox": [
+        154.037,
+        1.3290000000000002,
+        158.635,
+        5.927
+      ],
+      "clipId": null
+    },
+    {
+      "id": "visr-part-53",
+      "stage": "looking-back",
+      "group": 34,
+      "startChild": 4,
+      "endChild": 43,
+      "bbox": [
+        7.289000000000001,
+        0.11100000000000004,
+        56.891,
+        4.4239999999999995
+      ],
+      "clipId": null
+    },
+    {
+      "id": "visr-part-54",
+      "stage": "forward-context",
+      "group": 34,
+      "startChild": 43,
+      "endChild": 80,
+      "bbox": [
+        7.289000000000001,
+        15.933000000000002,
+        56.891,
+        20.245
+      ],
+      "clipId": null
+    },
+    {
+      "id": "visr-part-55",
+      "stage": "back-decline",
+      "group": 34,
+      "startChild": 80,
+      "endChild": 84,
+      "bbox": [
+        2.2479999999999998,
+        -0.505,
+        50.347,
+        16.685000000000002
+      ],
+      "clipId": "visr-reveal-55"
+    },
+    {
+      "id": "visr-part-56",
+      "stage": "forward-context",
+      "group": 34,
+      "startChild": 84,
+      "endChild": 85,
+      "bbox": [
+        0.4570000000000001,
+        -0.505,
+        166.136,
+        65.28699999999999
+      ],
+      "clipId": null
+    },
+    {
+      "id": "visr-part-57",
+      "stage": "summary",
+      "group": 34,
+      "startChild": 85,
+      "endChild": 86,
+      "bbox": [
+        8.046000000000001,
+        59.711,
+        68.348,
+        65.28699999999999
+      ],
+      "clipId": null
+    },
+    {
+      "id": "visr-part-58",
+      "stage": "looking-back",
+      "group": 34,
+      "startChild": 86,
+      "endChild": 87,
+      "bbox": [
+        0.4570000000000001,
+        14.763,
+        68.75699999999999,
+        15.679
+      ],
+      "clipId": null
+    },
+    {
+      "id": "visr-part-59",
+      "stage": "if-box",
+      "group": 34,
+      "startChild": 87,
+      "endChild": 94,
+      "bbox": [
+        136.792,
+        49.167,
+        145.849,
+        62.459
+      ],
+      "clipId": null
+    },
+    {
+      "id": "visr-part-60",
+      "stage": "prob-before",
+      "group": 34,
+      "startChild": 94,
+      "endChild": 96,
+      "bbox": [
+        21.694,
+        36.681999999999995,
+        31.663,
+        51.269
+      ],
+      "clipId": "visr-reveal-60"
+    },
+    {
+      "id": "visr-part-61",
+      "stage": "token-after-context",
+      "group": 34,
+      "startChild": 96,
+      "endChild": 97,
+      "bbox": [
+        44.57,
+        38.976,
+        57.243,
+        43.064
+      ],
+      "clipId": null
+    },
+    {
+      "id": "visr-part-62",
+      "stage": "token-before-context",
+      "group": 34,
+      "startChild": 97,
+      "endChild": 98,
+      "bbox": [
+        11.834,
+        38.976,
+        24.508000000000003,
+        43.064
+      ],
+      "clipId": null
+    },
+    {
+      "id": "visr-part-63",
+      "stage": "token-before-branches",
+      "group": 34,
+      "startChild": 98,
+      "endChild": 99,
+      "bbox": [
+        10.104000000000001,
+        39.696,
+        16.993000000000002,
+        49.543
+      ],
+      "clipId": "visr-reveal-63"
+    },
+    {
+      "id": "visr-part-64",
+      "stage": "token-head-0",
+      "group": 34,
+      "startChild": 99,
+      "endChild": 100,
+      "bbox": [
+        9.828000000000001,
+        44.196999999999996,
+        15.418,
+        49.788000000000004
+      ],
+      "clipId": null
+    },
+    {
+      "id": "visr-part-65",
+      "stage": "token-before-root",
+      "group": 34,
+      "startChild": 100,
+      "endChild": 102,
+      "bbox": [
+        12.381,
+        39.207,
+        16.59,
+        43.415
+      ],
+      "clipId": null
+    },
+    {
+      "id": "visr-part-66",
+      "stage": "token-before-context",
+      "group": 34,
+      "startChild": 102,
+      "endChild": 107,
+      "bbox": [
+        13.596,
+        30.389999999999997,
+        22.732000000000003,
+        37.620000000000005
+      ],
+      "clipId": null
+    },
+    {
+      "id": "visr-part-67",
+      "stage": "before-middle",
+      "group": 34,
+      "startChild": 107,
+      "endChild": 109,
+      "bbox": [
+        10.526,
+        46.305,
+        14.734,
+        50.513
+      ],
+      "clipId": null
+    },
+    {
+      "id": "visr-part-68",
+      "stage": "token-before-other",
+      "group": 34,
+      "startChild": 109,
+      "endChild": 111,
+      "bbox": [
+        13.539,
+        41.851,
+        19.129,
+        49.788000000000004
+      ],
+      "clipId": "visr-reveal-68"
+    },
+    {
+      "id": "visr-part-69",
+      "stage": "token-before-branches",
+      "group": 34,
+      "startChild": 111,
+      "endChild": 112,
+      "bbox": [
+        15.782000000000002,
+        39.696,
+        22.667,
+        49.665
+      ],
+      "clipId": "visr-reveal-69"
+    },
+    {
+      "id": "visr-part-70",
+      "stage": "token-head-1",
+      "group": 34,
+      "startChild": 112,
+      "endChild": 113,
+      "bbox": [
+        17.363999999999997,
+        44.32,
+        22.955000000000002,
+        49.910000000000004
+      ],
+      "clipId": null
+    },
+    {
+      "id": "visr-part-71",
+      "stage": "token-before-root",
+      "group": 34,
+      "startChild": 113,
+      "endChild": 115,
+      "bbox": [
+        16.2,
+        39.207,
+        20.408,
+        43.415
+      ],
+      "clipId": null
+    },
+    {
+      "id": "visr-part-72",
+      "stage": "token-before-other",
+      "group": 34,
+      "startChild": 115,
+      "endChild": 117,
+      "bbox": [
+        15.876,
+        48.949999999999996,
+        24.810000000000002,
+        54.591
+      ],
+      "clipId": "visr-reveal-72"
+    },
+    {
+      "id": "visr-part-73",
+      "stage": "before-middle",
+      "group": 34,
+      "startChild": 117,
+      "endChild": 121,
+      "bbox": [
+        14.23,
+        46.305,
+        22.264000000000003,
+        50.635
+      ],
+      "clipId": null
+    },
+    {
+      "id": "visr-part-74",
+      "stage": "token-before-other",
+      "group": 34,
+      "startChild": 121,
+      "endChild": 125,
+      "bbox": [
+        13.539,
+        41.759,
+        26.673000000000002,
+        49.788000000000004
+      ],
+      "clipId": "visr-reveal-74"
+    },
+    {
+      "id": "visr-part-75",
+      "stage": "token-before-root",
+      "group": 34,
+      "startChild": 125,
+      "endChild": 127,
+      "bbox": [
+        19.910999999999998,
+        39.120999999999995,
+        24.119,
+        43.329
+      ],
+      "clipId": null
+    },
+    {
+      "id": "visr-part-76",
+      "stage": "before-middle",
+      "group": 34,
+      "startChild": 127,
+      "endChild": 129,
+      "bbox": [
+        21.759,
+        46.305,
+        25.967000000000002,
+        50.513
+      ],
+      "clipId": null
+    },
+    {
+      "id": "visr-part-77",
+      "stage": "token-before-target",
+      "group": 34,
+      "startChild": 129,
+      "endChild": 133,
+      "bbox": [
+        7.203,
+        49.504999999999995,
+        24.119,
+        56.612
+      ],
+      "clipId": null
+    },
+    {
+      "id": "visr-part-78",
+      "stage": "before-links-target",
+      "group": 34,
+      "startChild": 133,
+      "endChild": 134,
+      "bbox": [
+        8.217,
+        46.793,
+        15.138,
+        54.038000000000004
+      ],
+      "clipId": "visr-reveal-78"
+    },
+    {
+      "id": "visr-part-79",
+      "stage": "token-head-3",
+      "group": 34,
+      "startChild": 134,
+      "endChild": 135,
+      "bbox": [
+        7.929,
+        48.692,
+        13.519,
+        54.282000000000004
+      ],
+      "clipId": null
+    },
+    {
+      "id": "visr-part-80",
+      "stage": "token-before-branches",
+      "group": 34,
+      "startChild": 135,
+      "endChild": 136,
+      "bbox": [
+        11.968,
+        39.696,
+        22.667,
+        49.665
+      ],
+      "clipId": "visr-reveal-80"
+    },
+    {
+      "id": "visr-part-81",
+      "stage": "token-head-2",
+      "group": 34,
+      "startChild": 136,
+      "endChild": 137,
+      "bbox": [
+        17.363999999999997,
+        44.32,
+        22.955000000000002,
+        49.910000000000004
+      ],
+      "clipId": null
+    },
+    {
+      "id": "visr-part-82",
+      "stage": "before-links-target",
+      "group": 34,
+      "startChild": 137,
+      "endChild": 138,
+      "bbox": [
+        8.217,
+        46.916,
+        22.667,
+        54.038000000000004
+      ],
+      "clipId": "visr-reveal-82"
+    },
+    {
+      "id": "visr-part-83",
+      "stage": "token-head-4",
+      "group": 34,
+      "startChild": 138,
+      "endChild": 139,
+      "bbox": [
+        7.936,
+        48.684999999999995,
+        13.527,
+        54.282000000000004
+      ],
+      "clipId": null
+    },
+    {
+      "id": "visr-part-84",
+      "stage": "token-before-target",
+      "group": 34,
+      "startChild": 139,
+      "endChild": 158,
+      "bbox": [
+        7.853,
+        54.78,
+        25.884,
+        57.346000000000004
+      ],
+      "clipId": null
+    },
+    {
+      "id": "visr-part-85",
+      "stage": "token-after-red",
+      "group": 34,
+      "startChild": 158,
+      "endChild": 159,
+      "bbox": [
+        44.735,
+        41.693999999999996,
+        47.501000000000005,
+        47.235
+      ],
+      "clipId": "visr-reveal-85"
+    },
+    {
+      "id": "visr-part-86",
+      "stage": "token-head-8",
+      "group": 34,
+      "startChild": 159,
+      "endChild": 160,
+      "bbox": [
+        42.391,
+        44.039,
+        47.981,
+        49.629000000000005
+      ],
+      "clipId": null
+    },
+    {
+      "id": "visr-part-87",
+      "stage": "token-after-root",
+      "group": 34,
+      "startChild": 160,
+      "endChild": 162,
+      "bbox": [
+        44.937,
+        39.049,
+        49.145,
+        43.257
+      ],
+      "clipId": null
+    },
+    {
+      "id": "visr-part-88",
+      "stage": "after-middle",
+      "group": 34,
+      "startChild": 162,
+      "endChild": 164,
+      "bbox": [
+        43.089,
+        46.153999999999996,
+        47.297000000000004,
+        50.362
+      ],
+      "clipId": null
+    },
+    {
+      "id": "visr-part-89",
+      "stage": "token-after-muted",
+      "group": 34,
+      "startChild": 164,
+      "endChild": 166,
+      "bbox": [
+        46.101,
+        41.693999999999996,
+        51.692,
+        49.629000000000005
+      ],
+      "clipId": "visr-reveal-89"
+    },
+    {
+      "id": "visr-part-90",
+      "stage": "token-after-red",
+      "group": 34,
+      "startChild": 166,
+      "endChild": 167,
+      "bbox": [
+        50.407,
+        41.693999999999996,
+        53.18,
+        47.357
+      ],
+      "clipId": "visr-reveal-90"
+    },
+    {
+      "id": "visr-part-91",
+      "stage": "token-head-9",
+      "group": 34,
+      "startChild": 167,
+      "endChild": 168,
+      "bbox": [
+        49.927,
+        44.161,
+        55.517,
+        49.752
+      ],
+      "clipId": null
+    },
+    {
+      "id": "visr-part-92",
+      "stage": "token-after-root",
+      "group": 34,
+      "startChild": 168,
+      "endChild": 170,
+      "bbox": [
+        48.763,
+        39.049,
+        52.971000000000004,
+        43.257
+      ],
+      "clipId": null
+    },
+    {
+      "id": "visr-part-93",
+      "stage": "after-links-target",
+      "group": 34,
+      "startChild": 170,
+      "endChild": 171,
+      "bbox": [
+        46.388999999999996,
+        46.641999999999996,
+        57.099000000000004,
+        54.196
+      ],
+      "clipId": "visr-reveal-93"
+    },
+    {
+      "id": "visr-part-94",
+      "stage": "token-head-7",
+      "group": 34,
+      "startChild": 171,
+      "endChild": 172,
+      "bbox": [
+        51.79,
+        48.842999999999996,
+        57.38,
+        54.433
+      ],
+      "clipId": null
+    },
+    {
+      "id": "visr-part-95",
+      "stage": "after-middle",
+      "group": 34,
+      "startChild": 172,
+      "endChild": 176,
+      "bbox": [
+        46.792,
+        46.153999999999996,
+        54.826,
+        50.484
+      ],
+      "clipId": null
+    },
+    {
+      "id": "visr-part-96",
+      "stage": "token-after-red",
+      "group": 34,
+      "startChild": 176,
+      "endChild": 177,
+      "bbox": [
+        52.062999999999995,
+        39.451,
+        58.926,
+        49.392
+      ],
+      "clipId": "visr-reveal-96"
+    },
+    {
+      "id": "visr-part-97",
+      "stage": "token-head-5",
+      "group": 34,
+      "startChild": 177,
+      "endChild": 178,
+      "bbox": [
+        53.616,
+        44.039,
+        59.207,
+        49.629000000000005
+      ],
+      "clipId": null
+    },
+    {
+      "id": "visr-part-98",
+      "stage": "token-after-red",
+      "group": 34,
+      "startChild": 178,
+      "endChild": 179,
+      "bbox": [
+        46.388999999999996,
+        39.451,
+        57.097,
+        49.392
+      ],
+      "clipId": "visr-reveal-98"
+    },
+    {
+      "id": "visr-part-99",
+      "stage": "token-head-6",
+      "group": 34,
+      "startChild": 179,
+      "endChild": 180,
+      "bbox": [
+        46.109,
+        44.039,
+        51.699,
+        49.629000000000005
+      ],
+      "clipId": null
+    },
+    {
+      "id": "visr-part-100",
+      "stage": "token-after-root",
+      "group": 34,
+      "startChild": 180,
+      "endChild": 182,
+      "bbox": [
+        52.466,
+        38.963,
+        56.675000000000004,
+        43.171
+      ],
+      "clipId": null
+    },
+    {
+      "id": "visr-part-101",
+      "stage": "after-middle",
+      "group": 34,
+      "startChild": 182,
+      "endChild": 184,
+      "bbox": [
+        54.321999999999996,
+        46.153999999999996,
+        58.53,
+        50.362
+      ],
+      "clipId": null
+    },
+    {
+      "id": "visr-part-102",
+      "stage": "token-after-target",
+      "group": 34,
+      "startChild": 184,
+      "endChild": 188,
+      "bbox": [
+        39.766,
+        49.354,
+        56.675000000000004,
+        56.461
+      ],
+      "clipId": null
+    },
+    {
+      "id": "visr-part-103",
+      "stage": "after-links-target",
+      "group": 34,
+      "startChild": 188,
+      "endChild": 189,
+      "bbox": [
+        42.83,
+        48.692,
+        45.544000000000004,
+        51.699
+      ],
+      "clipId": "visr-reveal-103"
+    },
+    {
+      "id": "visr-part-104",
+      "stage": "token-head-11",
+      "group": 34,
+      "startChild": 189,
+      "endChild": 190,
+      "bbox": [
+        40.498999999999995,
+        48.534,
+        46.089,
+        54.124
+      ],
+      "clipId": null
+    },
+    {
+      "id": "visr-part-105",
+      "stage": "token-after-red",
+      "group": 34,
+      "startChild": 190,
+      "endChild": 191,
+      "bbox": [
+        46.583,
+        41.693999999999996,
+        53.18,
+        47.347
+      ],
+      "clipId": "visr-reveal-105"
+    },
+    {
+      "id": "visr-part-106",
+      "stage": "token-head-10",
+      "group": 34,
+      "startChild": 191,
+      "endChild": 192,
+      "bbox": [
+        49.927,
+        44.161,
+        55.517,
+        49.752
+      ],
+      "clipId": null
+    },
+    {
+      "id": "visr-part-107",
+      "stage": "after-links-target",
+      "group": 34,
+      "startChild": 192,
+      "endChild": 193,
+      "bbox": [
+        42.885999999999996,
+        48.921,
+        53.181000000000004,
+        51.636
+      ],
+      "clipId": "visr-reveal-107"
+    },
+    {
+      "id": "visr-part-108",
+      "stage": "token-head-12",
+      "group": 34,
+      "startChild": 193,
+      "endChild": 194,
+      "bbox": [
+        40.506,
+        48.527,
+        46.097,
+        54.124
+      ],
+      "clipId": null
+    },
+    {
+      "id": "visr-part-109",
+      "stage": "prob-before",
+      "group": 34,
+      "startChild": 194,
+      "endChild": 212,
+      "bbox": [
+        25.563,
+        38.149,
+        38.395,
+        50.730000000000004
+      ],
+      "clipId": "visr-reveal-109"
+    },
+    {
+      "id": "visr-part-110",
+      "stage": "prob-after",
+      "group": 34,
+      "startChild": 212,
+      "endChild": 230,
+      "bbox": [
+        58.248,
+        37.717999999999996,
+        71.389,
+        50.730000000000004
+      ],
+      "clipId": "visr-reveal-110"
+    },
+    {
+      "id": "visr-part-111",
+      "stage": "prob-change",
+      "group": 34,
+      "startChild": 230,
+      "endChild": 239,
+      "bbox": [
+        59.981,
+        38.278999999999996,
+        69.764,
+        47.421
+      ],
+      "clipId": "visr-reveal-111"
+    },
+    {
+      "id": "visr-part-112",
+      "stage": "prob-after",
+      "group": 34,
+      "startChild": 239,
+      "endChild": 241,
+      "bbox": [
+        54.156,
+        36.272,
+        64.133,
+        51.362
+      ],
+      "clipId": "visr-reveal-112"
+    },
+    {
+      "id": "visr-part-113",
+      "stage": "if-box",
+      "group": 34,
+      "startChild": 241,
+      "endChild": 242,
+      "bbox": [
+        0.4570000000000001,
+        -0.505,
+        166.136,
+        65.28699999999999
+      ],
+      "clipId": null
+    },
+    {
+      "id": "visr-part-114",
+      "stage": "support-zoom-links",
+      "group": 34,
+      "startChild": 242,
+      "endChild": 244,
+      "bbox": [
+        60.865,
+        38.602,
+        84.57799999999999,
+        61.876000000000005
+      ],
+      "clipId": "visr-reveal-114"
+    },
+    {
+      "id": "visr-part-116",
+      "stage": "finish",
+      "group": 34,
+      "startChild": 276,
+      "endChild": 277,
+      "bbox": [
+        158.323,
+        29.828999999999997,
+        164.719,
+        36.224000000000004
+      ],
+      "clipId": null
+    },
+    {
+      "id": "visr-part-117",
+      "stage": "plot-shift",
+      "group": 34,
+      "startChild": 277,
+      "endChild": 280,
+      "bbox": [
+        88.552,
+        14.432,
+        96.24199999999999,
+        19.123
+      ],
+      "clipId": null
+    },
+    {
+      "id": "visr-part-118",
+      "stage": "token-after-target",
+      "group": 34,
+      "startChild": 280,
+      "endChild": 301,
+      "bbox": [
+        40.125,
+        54.78,
+        60.395,
+        57.346000000000004
+      ],
+      "clipId": null
+    },
+    {
+      "id": "visr-part-119",
+      "stage": "token-after-context",
+      "group": 34,
+      "startChild": 301,
+      "endChild": 314,
+      "bbox": [
+        45.454,
+        30.389999999999997,
+        58.02,
+        39.705
+      ],
+      "clipId": null
+    },
+    {
+      "id": "visr-part-120",
+      "stage": "summary",
+      "group": 34,
+      "startChild": 314,
+      "endChild": 315,
+      "bbox": [
+        2.773,
+        59.817,
+        7.241,
+        64.285
+      ],
+      "clipId": null
+    },
+    {
+      "id": "visr-part-121",
+      "stage": "forward-context",
+      "group": 34,
+      "startChild": 315,
+      "endChild": 318,
+      "bbox": [
+        8.897,
+        25.272,
+        61.2,
+        57.763
+      ],
+      "clipId": null
+    },
+    {
+      "id": "visr-part-122",
+      "stage": "back-training",
+      "group": 34,
+      "startChild": 318,
+      "endChild": 359,
+      "bbox": [
+        7.074000000000001,
+        4.738,
+        63.579,
+        10.343
+      ],
+      "clipId": "visr-reveal-122"
+    },
+    {
+      "id": "visr-part-123",
+      "stage": "plot-general",
+      "group": 34,
+      "startChild": 359,
+      "endChild": 374,
+      "bbox": [
+        76.436,
+        6.713,
+        89.898,
+        9.115
+      ],
+      "clipId": null
+    },
+    {
+      "id": "visr-part-124",
+      "stage": "forward-context",
+      "group": 34,
+      "startChild": 374,
+      "endChild": 405,
+      "bbox": [
+        20.305999999999997,
+        20.509,
+        54.598,
+        23.628
+      ],
+      "clipId": null
+    },
+    {
+      "id": "visr-part-125",
+      "stage": "support-frame",
+      "group": 34,
+      "startChild": 405,
+      "endChild": 406,
+      "bbox": [
+        85.94200000000001,
+        36.702999999999996,
+        119.148,
+        39.348
+      ],
+      "clipId": null
+    },
+    {
+      "id": "visr-part-126",
+      "stage": "if-box",
+      "group": 34,
+      "startChild": 406,
+      "endChild": 408,
+      "bbox": [
+        151.686,
+        35.683,
+        156.701,
+        40.698
+      ],
+      "clipId": null
+    },
+    {
+      "id": "visr-part-127",
+      "stage": "plot-general",
+      "group": 34,
+      "startChild": 408,
+      "endChild": 430,
+      "bbox": [
+        73.80300000000001,
+        8.959,
+        92.524,
+        27.018
+      ],
+      "clipId": null
+    },
+    {
+      "id": "visr-part-128",
+      "stage": "plot-shift",
+      "group": 34,
+      "startChild": 430,
+      "endChild": 436,
+      "bbox": [
+        93.22,
+        8.959,
+        111.94099999999999,
+        26.983
+      ],
+      "clipId": null
+    },
+    {
+      "id": "visr-part-129",
+      "stage": "plot-future",
+      "group": 34,
+      "startChild": 436,
+      "endChild": 445,
+      "bbox": [
+        107.25,
+        8.959,
+        130.63899999999998,
+        26.983
+      ],
+      "clipId": null
+    },
+    {
+      "id": "visr-part-130",
+      "stage": "plot-general",
+      "group": 35,
+      "startChild": 0,
+      "endChild": 1,
+      "bbox": [
+        77.117,
+        15.071,
+        87.312,
+        22.859
+      ],
+      "clipId": null
+    },
+    {
+      "id": "visr-part-131",
+      "stage": "plot-future",
+      "group": 36,
+      "startChild": 0,
+      "endChild": 1,
+      "bbox": [
+        114.325,
+        17.433999999999997,
+        121.241,
+        22.771
+      ],
+      "clipId": null
+    },
+    {
+      "id": "visr-part-132",
+      "stage": "plot-shift",
+      "group": 37,
+      "startChild": 0,
+      "endChild": 1,
+      "bbox": [
+        96.31500000000001,
+        13.874,
+        108.08399999999999,
+        22.831000000000003
+      ],
+      "clipId": null
+    },
+    {
+      "id": "visr-part-133",
+      "stage": "plot-future",
+      "group": 38,
+      "startChild": 0,
+      "endChild": 1,
+      "bbox": [
+        115.236,
+        13.874,
+        127.00399999999999,
+        22.831000000000003
+      ],
+      "clipId": null
+    },
+    {
+      "id": "visr-part-134",
+      "stage": "plot-future",
+      "group": 39,
+      "startChild": 0,
+      "endChild": 1,
+      "bbox": [
+        117.033,
+        13.924,
+        128.72299999999998,
+        22.825000000000003
+      ],
+      "clipId": null
+    },
+    {
+      "id": "visr-part-135",
+      "stage": "plot-general",
+      "group": 40,
+      "startChild": 0,
+      "endChild": 7,
+      "bbox": [
+        73.241,
+        14.953000000000001,
+        75.283,
+        20.315
+      ],
+      "clipId": null
+    },
+    {
+      "id": "visr-part-136",
+      "stage": "plot-shift",
+      "group": 40,
+      "startChild": 7,
+      "endChild": 23,
+      "bbox": [
+        97.2,
+        24.985,
+        107.28899999999999,
+        27.018
+      ],
+      "clipId": null
+    },
+    {
+      "id": "visr-part-137",
+      "stage": "plot-future",
+      "group": 40,
+      "startChild": 23,
+      "endChild": 39,
+      "bbox": [
+        115.897,
+        24.985,
+        125.987,
+        27.018
+      ],
+      "clipId": null
+    },
+    {
+      "id": "visr-part-138",
+      "stage": "plot-shift",
+      "group": 40,
+      "startChild": 39,
+      "endChild": 52,
+      "bbox": [
+        97.245,
+        6.713,
+        107.91,
+        9.115
+      ],
+      "clipId": null
+    },
+    {
+      "id": "visr-part-139",
+      "stage": "plot-future",
+      "group": 40,
+      "startChild": 52,
+      "endChild": 70,
+      "bbox": [
+        113.31400000000001,
+        6.747000000000001,
+        129.23399999999998,
+        9.137
+      ],
+      "clipId": null
+    },
+    {
+      "id": "visr-part-140",
+      "stage": "plot-shift",
+      "group": 40,
+      "startChild": 70,
+      "endChild": 95,
+      "bbox": [
+        93.706,
+        27.691,
+        112.19999999999999,
+        29.924000000000003
+      ],
+      "clipId": null
+    },
+    {
+      "id": "visr-part-141",
+      "stage": "plot-future",
+      "group": 40,
+      "startChild": 95,
+      "endChild": 138,
+      "bbox": [
+        113.08200000000001,
+        26.988,
+        130.12,
+        31.399
+      ],
+      "clipId": null
+    },
+    {
+      "id": "visr-part-142",
+      "stage": "plot-shift",
+      "group": 40,
+      "startChild": 138,
+      "endChild": 176,
+      "bbox": [
+        74.91000000000001,
+        28.581,
+        94.02199999999999,
+        32.789
+      ],
+      "clipId": null
+    },
+    {
+      "id": "visr-part-143",
+      "stage": "if-box",
+      "group": 40,
+      "startChild": 176,
+      "endChild": 189,
+      "bbox": [
+        146.223,
+        52.494,
+        153.694,
+        58.07
+      ],
+      "clipId": null
+    },
+    {
+      "id": "visr-part-144",
+      "stage": "plot-shift",
+      "group": 40,
+      "startChild": 189,
+      "endChild": 192,
+      "bbox": [
+        96.197,
+        18.724999999999998,
+        102.47,
+        24.999000000000002
+      ],
+      "clipId": null
+    },
+    {
+      "id": "visr-part-145",
+      "stage": "plot-shift",
+      "group": 41,
+      "startChild": 0,
+      "endChild": 1,
+      "bbox": [
+        98.33600000000001,
+        13.874,
+        110.02499999999999,
+        22.775000000000002
+      ],
+      "clipId": null
+    },
+    {
+      "id": "visr-part-146",
+      "stage": "plot-future",
+      "group": 42,
+      "startChild": 0,
+      "endChild": 3,
+      "bbox": [
+        114.988,
+        17.38,
+        121.261,
+        23.654
+      ],
+      "clipId": null
+    },
+    {
+      "id": "visr-part-147",
+      "stage": "token-before-context",
+      "group": 42,
+      "startChild": 3,
+      "endChild": 11,
+      "bbox": [
+        11.885,
+        34.431,
+        24.450000000000003,
+        39.705
+      ],
+      "clipId": null
+    },
+    {
+      "id": "visr-part-148",
+      "stage": "token-after-context",
+      "group": 42,
+      "startChild": 11,
+      "endChild": 31,
+      "bbox": [
+        32.661,
+        33.734,
+        43.026,
+        40.575
+      ],
+      "clipId": null
+    },
+    {
+      "id": "visr-part-149",
+      "stage": "token-before-context",
+      "group": 42,
+      "startChild": 31,
+      "endChild": 32,
+      "bbox": [
+        3.7579999999999996,
+        38.391,
+        10.859,
+        42.575
+      ],
+      "clipId": null
+    }
+  ],
+  "frameIntervalMs": 50,
+  "gifWidth": 1600
+}

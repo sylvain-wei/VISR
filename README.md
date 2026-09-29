@@ -39,10 +39,10 @@ We define **effective rewardable support** as successful trajectories reachable 
 Improving the current objective can make those trajectories harder to sample and reinforce in a later stage.
 
 <p align="center">
-  <img src="docs/assets/figures/fig1-overview.svg" alt="Overview: Math-RLVR and IF-RLVR reshape the successful trajectories available to later on-policy training." width="100%">
+  <img src="docs/assets/figures/fig1-overview-animated.gif" alt="Overview: Math-RLVR and IF-RLVR reshape the successful trajectories available to later on-policy training." width="100%">
 </p>
 
-<sub>[Read the paper](https://arxiv.org/pdf/2608.00220) · [Explore the project](https://sylvain-wei.github.io/VISR/#overview)</sub>
+<sub>[Read the paper](https://arxiv.org/pdf/2608.00220) · [Explore the project](https://sylvain-wei.github.io/VISR/#overview) · [Static SVG](docs/assets/figures/fig1-overview.svg) · [Figure PDF](docs/assets/figures/fig1-overview.pdf)</sub>
 
 ## Main results
 

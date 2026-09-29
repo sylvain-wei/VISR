@@ -24,3 +24,9 @@ Each paper PDF is copied unchanged. Matching SVG files preserve the source vecto
 The report version preserves the approved `%` notation for absolute performance changes. `../VISR-technical-report.pdf` supplies the surrounding definitions, protocols, and evidence boundaries. General figure-generation code and raw research logs remain outside this curated documentation release.
 
 The social preview `../og-card.png` is retained from the earlier page and depicts the same paper overview and title.
+
+## Animated overview
+
+`fig1-overview-animated.svg` reveals the original overview in this order: the three headings, continual-optimization plots from left to right, looking back, token connections before and after training, sampling probabilities, the magnified support frame, base-policy support, IF-RLVR, and Math-RLVR. The full figure then remains visible for 3.6 seconds. No original text, paths, or embedded images are redrawn.
+
+`fig1-overview-timeline.json` is the shared timing and source-element map for the website SVG and the README GIF. Both loop in 18.8 seconds. The GIF uses 1600 × 632 pixels, a 50 ms sampling interval during the reveal, and a shared 256-color palette; identical adjacent frames are merged without changing their total duration. The website supplies Pause, Replay, and Show all controls, and displays the complete static figure when reduced motion is preferred. Static SVG/PDF downloads remain available.
