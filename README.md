@@ -8,7 +8,7 @@
 
 <a href="https://www.pku.edu.cn/"><img src="docs/assets/pku-logo.svg" alt="Peking University" width="235"></a>
 
-[Project Page](https://sylvain-wei.github.io/verifier-induced-support-reshaping/) · [arXiv](https://arxiv.org/abs/2608.00220) · [PDF](https://arxiv.org/pdf/2608.00220) · [Code](https://github.com/sylvain-wei/verifier-induced-support-reshaping) · [Reproducibility](REPRODUCIBILITY.md) · [Citation](#citation) · [License](LICENSE)
+[Project Page](https://sylvain-wei.github.io/VISR/) · [arXiv](https://arxiv.org/abs/2608.00220) · [PDF](https://arxiv.org/pdf/2608.00220) · [Code](https://github.com/sylvain-wei/VISR) · [Reproducibility](REPRODUCIBILITY.md) · [Citation](#citation) · [License](LICENSE)
 
 <img src="docs/assets/figures/fig1-overview.svg" alt="Overview of verifier-induced support reshaping: unlike backward-looking forgetting, the paper studies how Math-RLVR and IF-RLVR change the behaviors that future on-policy training can still sample and reward." width="100%">
 
@@ -55,7 +55,7 @@ relative to a sampling budget.
   vary substantially with the teacher checkpoint.
 
 Explore the full evidence chain, figures, metric explanations, and accessible
-tables on the [project page](https://sylvain-wei.github.io/verifier-induced-support-reshaping/).
+tables on the [project page](https://sylvain-wei.github.io/VISR/).
 
 ## Abstract
 

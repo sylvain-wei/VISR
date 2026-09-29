@@ -196,8 +196,8 @@ def check_public_metadata(errors: list[str]) -> None:
         errors.append("public title is inconsistent across README and CITATION.cff")
     for public_url in (
         "https://arxiv.org/abs/2608.00220",
-        "https://sylvain-wei.github.io/verifier-induced-support-reshaping/",
-        "https://github.com/sylvain-wei/verifier-induced-support-reshaping",
+        "https://sylvain-wei.github.io/VISR/",
+        "https://github.com/sylvain-wei/VISR",
     ):
         if public_url not in readme or public_url not in citation:
             errors.append(f"public metadata URL is inconsistent: {public_url}")
