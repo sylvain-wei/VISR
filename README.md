@@ -1,240 +1,136 @@
-<div align="center">
+<p align="center">
+  <img src="docs/assets/hero.jpg" alt="Verifier-Induced Support Reshaping in On-Policy Optimization" width="100%">
+</p>
 
-# Verifier-Induced Support Reshaping in On-Policy Optimization
+<h1 align="center">Verifier-Induced Support Reshaping in On-Policy Optimization</h1>
 
-**Shaohang Wei<sup>1</sup>, Zikun Su<sup>2</sup>, Feifan Song<sup>1</sup>, Wen Luo<sup>1</sup>, Wei Li<sup>1</sup>, Guangyue Peng<sup>1</sup>, and Houfeng Wang<sup>1</sup>**
+<p align="center">
+  Shaohang Wei<sup>1‡</sup>, Zikun Su<sup>2</sup>, Feifan Song<sup>1</sup>,
+  Wen Luo<sup>1</sup>, Wei Li<sup>1</sup>, Guangyue Peng<sup>1</sup>, Houfeng Wang<sup>1†</sup>
+</p>
 
-<sup>1</sup>Peking University &nbsp;&nbsp; <sup>2</sup>BUPT
+<p align="center">
+  <sup>1</sup>Peking University &nbsp; <sup>2</sup>BUPT<br>
+  <sup>‡</sup> Project Lead &nbsp; <sup>†</sup> Corresponding Author<br>
+  Correspondence: <a href="mailto:wanghf@pku.edu.cn">wanghf@pku.edu.cn</a>
+</p>
 
-<a href="https://www.pku.edu.cn/"><img src="docs/assets/pku-logo.svg" alt="Peking University" width="235"></a>
+<p align="center">
+  <a href="https://arxiv.org/abs/2608.00220"><img src="https://img.shields.io/badge/arXiv-2608.00220-B31B1B?style=flat-square" alt="Paper on arXiv"></a>
+  <a href="https://sylvain-wei.github.io/VISR/"><img src="https://img.shields.io/badge/Website-Project_Page-275EE8?style=flat-square" alt="Project website"></a>
+  <a href="LICENSE"><img src="https://img.shields.io/badge/License-Apache_2.0-4A4A4A?style=flat-square" alt="Code license: Apache 2.0"></a>
+  <a href="eval/README.md"><img src="https://img.shields.io/badge/Python-3.10%2B-3776AB?style=flat-square&logo=python&logoColor=white" alt="Python 3.10 or newer"></a>
+</p>
 
-[Project Page](https://sylvain-wei.github.io/VISR/) · [arXiv](https://arxiv.org/abs/2608.00220) · [PDF](https://arxiv.org/pdf/2608.00220) · [Code](https://github.com/sylvain-wei/VISR) · [Reproducibility](REPRODUCIBILITY.md) · [Citation](#citation) · [License](LICENSE)
-
-<img src="docs/assets/figures/fig1-overview.svg" alt="Overview of verifier-induced support reshaping: unlike backward-looking forgetting, the paper studies how Math-RLVR and IF-RLVR change the behaviors that future on-policy training can still sample and reward." width="100%">
-
-### On-policy verifiers do more than score sampled trajectories: they reshape which behaviors remain reachable, rewardable, and trainable next.
-
-</div>
+<p align="center">
+  <a href="https://sylvain-wei.github.io/VISR/"><b>Project Website ↗</b></a> &nbsp;·&nbsp;
+  <a href="#overview">Overview</a> &nbsp;·&nbsp;
+  <a href="#main-results">Results</a> &nbsp;·&nbsp;
+  <a href="#key-findings">Findings</a> &nbsp;·&nbsp;
+  <a href="#getting-started">Getting started</a> &nbsp;·&nbsp;
+  <a href="#citation">Citation</a>
+</p>
 
 ## Overview
 
-This repository accompanies the arXiv preprint **Verifier-Induced Support
-Reshaping in On-Policy Optimization**. It studies a forward-looking property of
-continual RLVR: whether reward-positive trajectories for a later objective
-remain likely enough to be discovered within a finite rollout budget.
+**Can a model still discover successful behaviors for its next training objective?**
+VISR studies how on-policy reinforcement learning with verifiable rewards (RLVR) changes this ability across mathematical reasoning and instruction following.
+We define **effective rewardable support** as successful trajectories reachable within a fixed rollout budget.
+Improving the current objective can make those trajectories harder to sample and reinforce in a later stage.
 
-That question differs from catastrophic forgetting. Forgetting asks which
-previously learned capabilities remain after adaptation; support reshaping asks
-which successful trajectories a future on-policy stage can still sample,
-verify, and reinforce. Effective rewardable support is therefore always defined
-relative to a sampling budget.
+<p align="center">
+  <img src="docs/assets/figures/fig1-overview.svg" alt="Overview: Math-RLVR and IF-RLVR reshape the successful trajectories available to later on-policy training." width="100%">
+</p>
+
+<sub>[Read the paper](https://arxiv.org/pdf/2608.00220) · [Explore the project](https://sylvain-wei.github.io/VISR/#overview)</sub>
+
+## Main results
+
+**Math-RLVR improves average instruction-following success while reducing coverage under repeated sampling.**
+The pattern appears in both model families on IFEval and IFBench.
+Here, pass@1 measures average rollout success; best@32 measures the fraction of prompts with at least one successful response among 32 samples.
+
+Changes from Base to the final Math-RLVR checkpoint, on the percentage scale:
+
+| Model | Benchmark | Δ pass@1 | Δ best@32 |
+| :-- | :-- | --: | --: |
+| Qwen3-8B-Base | IFEval | +6.5% | −9.8% |
+| Qwen2.5-Math-7B | IFEval | +7.9% | −11.4% |
+| Qwen3-8B-Base | IFBench | +3.2% | −6.7% |
+| Qwen2.5-Math-7B | IFBench | +1.6% | −3.7% |
+
+**In the reverse direction, IF-RLVR lowers math searchability.**
+On AIME, best@k decreases at every tested budget (`k = 4, 8, 16, 32`), while visible response openings shift from step-by-step reasoning toward direct answers.
+
+<details>
+<summary><b>View the training curves and opening-route analysis</b></summary>
+
+<p align="center">
+  <img src="docs/assets/figures/fig2-if-polarization.svg" alt="Math-RLVR training curves: average IF success rises while best@32 falls." width="100%">
+</p>
+
+<p align="center">
+  <img src="docs/assets/figures/fig3-math-searchability.svg" alt="IF-RLVR training curves: math best@k decreases as visible opening routes change." width="100%">
+</p>
+
+</details>
+
+<sub>[Explore the full results](https://sylvain-wei.github.io/VISR/#findings)</sub>
+
+## Response openings and math searchability
+
+<table>
+  <tr>
+    <td width="50%"><img src="docs/assets/figures/fig6-opening-divergence.svg" alt="Distribution shifts are largest at the first response token." width="100%"></td>
+    <td width="50%"><img src="docs/assets/figures/fig8-opening-intervention-a.svg" alt="Controlled opening interventions improve math best@32 from IF-RLVR checkpoints." width="100%"></td>
+  </tr>
+</table>
+
+The first response token has the largest mean distribution shift in every tested model, verifier, and benchmark combination.
+Forcing Base-side or deliberative openings from IF-RLVR checkpoints improves best@32 on AIME and MATH-500 in both model families.
+These controlled interventions show that response openings affect math searchability in the tested settings.
+
+<sub>[Position sweeps and intervention details](https://sylvain-wei.github.io/VISR/#mechanism)</sub>
 
 ## Key findings
 
-- **Math-RLVR polarizes instruction-following support.** Across two model
-  families and two IF benchmarks, final-minus-Base pass@1 increases while
-  best@32 decreases. On IFEval with Qwen3-8B-Base, the changes are **+0.065**
-  and **-0.098**, respectively: average rollout success improves even as
-  repeated sampling covers fewer prompts.
-- **IF-RLVR lowers math searchability.** AIME best@k decreases for every tested
-  budget, `k = 4, 8, 16, 32`, while visible response openings move from
-  deliberative-reasoning initiation (DRI) toward direct-answer initiation
-  (DAI). Their checkpoint-level association, Pearson **r = -0.85**, is
-  correlational; DRI and DAI describe visible text, not hidden reasoning states.
-- **The largest policy shift occurs at route entry.** The first generated token
-  has the highest mean Jensen-Shannon divergence in every tested model,
-  verifier, and benchmark combination. On AIME, first-token divergence is
-  **9.8×–106.7×** the interior-token divergence.
-- **Controlled openings affect searchability in the tested settings.** Forcing
-  Base-side or DRI openings from IF-RLVR checkpoints improves best@32 across
-  both model families on AIME and MATH-500. Position sweeps support a localized
-  route-entry effect rather than broad erasure of mathematical reasoning.
-- **Preservation remains partial and teacher-dependent.** Reference-policy
-  constraints trade IF adaptation against math retention; a one-time DRI prior
-  delays but does not prevent the observed endpoint shift; and OPD outcomes
-  vary substantially with the teacher checkpoint.
+- **Average success and sampling coverage can move in opposite directions.** A higher pass@1 can coexist with fewer prompts yielding any successful response within a fixed budget.
+- **Response openings matter for later search.** Token-distribution measurements and controlled interventions identify the opening as a point where RLVR changes which successful responses remain reachable.
+- **Preservation remains partial.** Reference-policy constraints and opening priors provide limited retention in the tested settings; on-policy distillation outcomes depend on the teacher checkpoint.
 
-Explore the full evidence chain, figures, metric explanations, and accessible
-tables on the [project page](https://sylvain-wei.github.io/VISR/).
+## Getting started
 
-## Abstract
-
-> We show that on-policy reinforcement learning with verifiable rewards (RLVR)
-> can improve the current objective while making successful behaviors for later
-> objectives too rare to sample and reinforce. We call this verifier-induced
-> support reshaping and define effective rewardable support as successful
-> trajectories reachable within a fixed rollout budget. Across two model
-> families, we study this effect through repeated verifier-scored sampling and
-> bidirectional training on mathematical reasoning and constrained instruction
-> following, including sequential training with the opposite verifier.
-> Math-RLVR raises average instruction-following success but reduces the number
-> of prompts with any successful response under repeated sampling. On IFEval
-> with Qwen3-8B-Base, pass@1 rises by 6.5 percentage points while best@32 falls
-> by 9.8 percentage points, and the same divergence appears across both models
-> and IF benchmarks. Conversely, IF-RLVR shifts math responses from step-by-step
-> openings toward direct answers, lowers best@k across sampling budgets, and
-> reduces reward variation for later Math-RLVR. Token-distribution analyses and
-> controlled opening interventions show that these changes concentrate in the
-> first few response tokens. RLVR mainly reranks openings already available in
-> the base policy, and the selected opening causally affects math searchability.
-> The tested reference-policy constraints, routing priors, and on-policy
-> distillation preserve cross-task support only partially; MathIF and ReasonIF
-> show that marginal gains translate only partly into responses that are both
-> correct and constraint-following. Therefore, endpoint improvements do not
-> guarantee future trainability or joint capability under on-policy
-> optimization.
-
-## Quick start
-
-### 1. Validate the release
-
-From the repository root, run the integrity and release-safety checker:
+The repository includes the training framework, evaluation pipeline, analysis scripts, and selected paper tables.
+Paper checkpoints and raw rollouts are not bundled; see [resource availability](REPRODUCIBILITY.md).
 
 ```bash
-python verify_release.py
+git clone https://github.com/sylvain-wei/VISR.git
+cd VISR
 ```
 
-### 2. Run the lightweight CPU tests
+| Task | Guide |
+| :-- | :-- |
+| Install dependencies and configure models / data | [Evaluation setup](eval/README.md) |
+| Run a small check or the full evaluation | [Evaluation commands](eval/README.md#quick-validation) |
+| Inspect training recipes and their requirements | [Training scope](REPRODUCIBILITY.md#training-boundary) · [DAPO reference recipe](configs/dapo/README.md) |
+| Inspect analyses and released tables | [Analysis guide](analysis/README.md) · [Paper tables](analysis/paper/tables/) |
 
-Python 3.10 or newer is required. These tests do not require a GPU or paper
-checkpoints:
-
-```bash
-python -m venv .venv
-source .venv/bin/activate
-python -m pip install --upgrade pip
-python -m pip install -r eval/requirements-test.txt
-PYTHONPATH=eval python -m unittest discover -s eval/tests -v
-```
-
-Four converter tests are skipped when the optional local benchmark files are
-absent. The remaining tests cover answer extraction, diversity metrics, text
-metrics, and the rule-based instruction-following verifier.
-
-### 3. Prepare the full evaluation environment
-
-The full training and vLLM evaluation stacks are CUDA-specific:
+After installing the evaluation environment and configuring checkpoint and dataset paths:
 
 ```bash
-export PROJECT_ROOT="$(pwd)"
-python -m pip install -e "${PROJECT_ROOT}/verl"
-python -m pip install -r "${PROJECT_ROOT}/eval/requirements.txt"
-export PYTHONPATH="${PROJECT_ROOT}/verl:${PROJECT_ROOT}:${PYTHONPATH:-}"
-```
-
-Install PyTorch, Transformers, vLLM, and their GPU dependencies using versions
-compatible with the target CUDA driver. Configure
-[`eval/configs/models.yaml`](eval/configs/models.yaml) and
-[`eval/configs/datasets.yaml`](eval/configs/datasets.yaml), then inspect the
-environment:
-
-```bash
-cd "${PROJECT_ROOT}/eval"
-python scripts/check_env.py
+cd eval
 python scripts/check_env.py --strict
-```
-
-The default command reports unresolved components. The strict command exits
-nonzero when a required package or model path is unavailable.
-
-### 4. Run evaluation
-
-After configuring the required checkpoint and dataset paths:
-
-```bash
-cd "${PROJECT_ROOT}/eval"
 bash scripts/dry_run.sh
 bash scripts/run_rq1_required.sh
 ```
 
-The smoke run uses two examples per required evaluation cell. The full launcher
-prepares MATH-500, AIME 2024, GSM8K, IFEval, and the rule-checkable IFBench
-subset; performs inference for the configured Base, Math-RLVR, and IF-RLVR
-checkpoints; computes metrics; and aggregates the results. Exact decoding
-settings are in [`eval/configs/eval_plan.yaml`](eval/configs/eval_plan.yaml).
+## License and acknowledgments
 
-## Reproducibility and artifact scope
-
-This is a research-code release, not a one-command reproduction of every paper
-result. See the detailed [reproducibility matrix](REPRODUCIBILITY.md).
-
-| Status | Material |
-|---|---|
-| Included | Bundled verl/DAPO framework snapshot; reward and verifier code; evaluation and non-visual analysis scripts; unit tests; selected paper tables; curated static paper figures, an official institutional mark, and clearly labeled editorial artwork for documentation |
-| Public external input | Qwen3-8B-Base and the benchmark datasets listed in `eval/configs/` |
-| Required but not included | Fine-tuned paper checkpoints, generated rollouts, raw experiment logs, most intermediate analysis CSVs, and site-specific cluster launchers |
-| Out of scope | General manuscript figure-rendering or styling code, raw figure data, and intermediate figure artifacts |
-
-The missing large artifacts prevent end-to-end numerical reproduction from a
-fresh clone. They do not prevent inspection of the released algorithms,
-verification logic, evaluation protocol, or selected published numeric tables.
-Each training configuration has one fixed-seed run; repeated rollouts measure
-sampling variation within a policy, not uncertainty across training seeds.
-
-## Repository structure
-
-```text
-.
-├── configs/dapo/          DAPO recipe and reference launch configurations
-├── verl/                  bundled verl training framework snapshot
-├── eval/                  inference, scoring, aggregation, and unit tests
-├── scripts_eval/          checkpoint-evaluation entry points
-├── analysis/scripts/      non-visual analyses and training support
-├── analysis/paper/tables/ selected released paper tables
-├── docs/                  static project page, paper figures, and documented editorial assets
-├── REPRODUCIBILITY.md     artifact availability and reproduction boundary
-├── THIRD_PARTY_NOTICES.md vendored-code provenance and licenses
-├── MANIFEST.tsv           SHA-256 inventory of released files
-└── verify_release.py      integrity, privacy, and release-safety checker
-```
-
-## Training and evaluation notes
-
-`configs/dapo/` and `verl/` expose the training implementation and reference
-recipes. Several experiment wrappers require an external `RL_LAUNCH_SCRIPT`,
-`OPD_LAB_ROOT`, or cluster scheduler configuration. These site-specific
-components are not included, so the repository does not provide turnkey
-retraining commands for every paper checkpoint.
-
-Selected final numeric tables are stored under `analysis/paper/tables/`.
-`analysis/scripts/make_paper_tables.py` checks for the intermediate analysis
-CSVs needed to regenerate derived tables and reports missing inputs explicitly.
-The raw logs and intermediate CSVs are not bundled.
-
-The primary reported setup was one node with 8 NVIDIA H20 GPUs, each with 96 GB
-of memory.
-
-### Common environment variables
-
-- `CUDA_VISIBLE_DEVICES` and `TENSOR_PARALLEL_SIZE` select evaluation GPUs.
-- `CONDA_ENV` lets a launcher activate a caller-selected Conda environment.
-- `RL_LAUNCH_SCRIPT` points to a site-specific IF-RLVR launcher.
-- `OPD_LAB_ROOT` and `OPD_OUTPUT_ROOT` point to an external OPD runner and its
-  outputs.
-- `DEEPSEEK_API_KEY` is used only by optional external-judge scripts; no
-  credential is included.
-
-## Release verification
-
-Run `python verify_release.py` after extraction. The checker validates required
-metadata, manifest coverage and hashes, first-party Python syntax, shell and
-junk-file hygiene, symlinks, large Git blobs, private paths, common secret
-patterns, and the narrowly scoped documentation-figure boundary.
-
-After intentional file changes, rebuild the manifest last:
-
-```bash
-python scripts/rebuild_manifest.py
-python verify_release.py
-```
-
-These checks establish repository integrity and release hygiene. They do not
-prove that GPU training or checkpoint-dependent evaluation completed.
+Code and repository documentation use the [Apache License 2.0](LICENSE); paper figures retain their [CC BY 4.0 license](docs/assets/figures/README.md).
+We build on verl and evaluation components from Google Research IFEval and AllenAI IFBench.
+See [third-party notices](THIRD_PARTY_NOTICES.md) and [asset credits](docs/assets/README.md) for attribution and license details.
 
 ## Citation
-
-This work is an [arXiv preprint](https://arxiv.org/abs/2608.00220). Machine-readable
-metadata are available in [`CITATION.cff`](CITATION.cff).
 
 ```bibtex
 @misc{wei2026verifier,
@@ -248,26 +144,3 @@ metadata are available in [`CITATION.cff`](CITATION.cff).
   url           = {https://arxiv.org/abs/2608.00220}
 }
 ```
-
-## License and acknowledgments
-
-First-party code and repository documentation are released under the
-[Apache License 2.0](LICENSE). Paper figures reproduced from the arXiv source
-are covered by the paper's [CC BY 4.0 license](https://creativecommons.org/licenses/by/4.0/);
-their provenance and conversion details are recorded in
-[`docs/assets/figures/README.md`](docs/assets/figures/README.md).
-
-The Peking University mark is an official institutional asset and is not
-licensed under Apache-2.0. The project-page editorial interludes are explicitly
-conceptual artwork, not paper figures or experimental evidence. Their sources,
-generation method, and license boundaries are recorded in
-[`docs/assets/README.md`](docs/assets/README.md).
-
-Vendored components retain their own notices; see [`NOTICE`](NOTICE),
-[`THIRD_PARTY_NOTICES.md`](THIRD_PARTY_NOTICES.md), and component-local license
-files. This release builds on the verl training framework and includes adapted
-evaluation components from Google Research IFEval and AllenAI IFBench. For
-manuscript preparation, AI assistants were used only for translation and
-language polishing. Separately, the project-page editorial interludes were
-generated as clearly labeled conceptual artwork and are not part of the paper's
-scientific evidence.

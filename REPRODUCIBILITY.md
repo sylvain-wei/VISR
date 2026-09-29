@@ -51,21 +51,22 @@ The primary reported setup was one node with 8 NVIDIA H20 GPUs with 96 GB per
 GPU. Compute time and full cluster-software versions are not recoverable from
 the archived package.
 
+Each training configuration has one fixed-seed run. Repeated rollouts measure
+sampling variation within a policy, not uncertainty across training seeds.
+
+For wrappers that use external infrastructure:
+
+- `RL_LAUNCH_SCRIPT` points to a site-specific IF-RLVR launcher.
+- `OPD_LAB_ROOT` points to the external OPD runner.
+- `OPD_OUTPUT_ROOT` selects its output location.
+
 ## Evaluation boundary
 
 The evaluation pipeline provides public dataset fallbacks and fixed decoding
-plans. It requires the configured model directories. Use:
-
-```bash
-cd eval
-python scripts/check_env.py --strict
-bash scripts/dry_run.sh
-bash scripts/run_rq1_required.sh
-```
-
-`check_env.py --strict` is the gate: it exits nonzero until required packages
-and model paths are available. A non-strict environment report is diagnostic
-only.
+plans. It requires the configured model directories. Follow the
+[evaluation guide](eval/README.md) for installation, CPU tests, environment
+checks, smoke evaluation, and the full matrix. Its strict environment check
+exits nonzero until required packages and model paths are available.
 
 ## Table artifacts
 
@@ -107,6 +108,31 @@ model internals. Asset-level source, generation, conversion, and licensing
 notes are recorded in `docs/assets/README.md` and
 `docs/assets/illustrations/README.md`. These site assets do not change the
 repository's scientific artifact scope.
+
+## Release verification
+
+From the repository root, run:
+
+```bash
+python verify_release.py
+```
+
+The checker validates required metadata, manifest coverage and hashes,
+first-party Python syntax, shell and junk-file hygiene, symlinks, large Git
+blobs, private paths, common secret patterns, and the documentation-figure
+boundary. These checks establish repository integrity and release hygiene;
+they do not establish that GPU training or checkpoint-dependent evaluation
+completed.
+
+After intentional file changes, rebuild the manifest and verify again:
+
+```bash
+python scripts/rebuild_manifest.py
+python verify_release.py
+```
+
+Keep virtual environments outside the checkout; the manifest inventories
+released files rather than the local execution environment.
 
 ## Release procedure
 

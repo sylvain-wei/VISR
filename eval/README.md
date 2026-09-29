@@ -15,10 +15,10 @@ All filesystem locations are portable:
 - `configs/eval_plan.yaml` defines models, benchmarks, decoding, and seeds.
 
 The literal `PROJECT_ROOT` token in YAML files is expanded by the configuration
-loader. Set it to the extracted package root:
+loader. From the repository root, set:
 
 ```bash
-export PROJECT_ROOT="$(cd .. && pwd)"
+export PROJECT_ROOT="$(pwd)"
 ```
 
 The model registry uses the Qwen chat template for all compared checkpoints,
@@ -28,18 +28,20 @@ ends in `_cot`.
 
 ## Dependencies
 
-Install the bundled training framework and the evaluation additions from the
-package root:
+The full training and vLLM evaluation stacks require a compatible CUDA
+environment. Install PyTorch, Transformers, vLLM, and their GPU dependencies
+for the target CUDA driver, then install the bundled framework and evaluation
+additions:
 
 ```bash
 python -m pip install -e "${PROJECT_ROOT}/verl"
 python -m pip install -r "${PROJECT_ROOT}/eval/requirements.txt"
+export PYTHONPATH="${PROJECT_ROOT}/verl:${PROJECT_ROOT}:${PYTHONPATH:-}"
 ```
 
 The base environment must also provide compatible versions of PyTorch,
 Transformers, vLLM, Datasets, NumPy, pandas, PyArrow, PyYAML, SymPy, regex,
-pylatexenc, and tqdm. Run `python scripts/check_env.py` to report missing
-packages and unresolved model or dataset locations.
+pylatexenc, and tqdm.
 
 The primary training setup for the reported experiments was **8 NVIDIA H20
 GPUs with 96 GB per GPU**. Evaluation GPU count can be selected with
@@ -48,14 +50,19 @@ the chosen model, context length, and batch settings.
 
 ## Quick validation
 
-From `eval/`:
+Configure `configs/models.yaml` and `configs/datasets.yaml` before running:
 
 ```bash
+cd "${PROJECT_ROOT}/eval"
 export CUDA_VISIBLE_DEVICES=0
 export TENSOR_PARALLEL_SIZE=1
 python scripts/check_env.py
+python scripts/check_env.py --strict
 bash scripts/dry_run.sh
 ```
+
+The default environment check reports unresolved components. The strict check
+exits nonzero when a required package or model path is unavailable.
 
 The smoke run processes two examples per required evaluation cell and writes to
 `responses/${RUN_ID}` and `metrics/${RUN_ID}`. Missing model weights or data are
@@ -117,18 +124,35 @@ replacing an existing cell.
 - Model weights, checkpoints, and generated responses are not included in this
   package.
 
-## Tests
+## CPU tests
+
+Python 3.10 or newer is required. From the repository root, create a separate
+environment outside the checkout so it is not included in the release
+manifest:
 
 ```bash
-python -m pip install -r requirements-test.txt
-PYTHONPATH=. python -m unittest discover -s tests -v
+python -m venv "${HOME}/.venvs/visr-cpu-tests"
+source "${HOME}/.venvs/visr-cpu-tests/bin/activate"
+python -m pip install --upgrade pip
+python -m pip install -r eval/requirements-test.txt
+PYTHONPATH=eval python -m unittest discover -s eval/tests -v
 ```
 
 `requirements-test.txt` is a pinned CPU-only dependency snapshot for the unit
-tests. It is separate from the CUDA-specific training and vLLM environment.
+tests; no GPU or paper checkpoints are needed. Four converter tests are skipped
+when optional local benchmark files are absent. The remaining tests cover
+answer extraction, diversity metrics, text metrics, and the rule-based
+instruction-following verifier.
 
-The package-level `verify_release.py` additionally checks first-party syntax,
-manifest integrity, junk files, symlinks, and common privacy or secret markers.
+For package integrity checks, see
+[release verification](../REPRODUCIBILITY.md#release-verification).
+
+## Environment variables
+
+- `CUDA_VISIBLE_DEVICES` and `TENSOR_PARALLEL_SIZE` select evaluation GPUs.
+- `CONDA_ENV` lets a launcher activate a caller-selected Conda environment.
+- `DEEPSEEK_API_KEY` is used only by optional external-judge scripts; no
+  credential is included.
 
 If vLLM reports CUDA reinitialization after a process fork, set:
 

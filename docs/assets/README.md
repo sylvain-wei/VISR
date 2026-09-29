@@ -1,4 +1,4 @@
-# Project-page asset provenance
+# Documentation asset provenance
 
 This directory separates scientific paper figures, an official institutional
 mark, and non-scientific editorial artwork. These asset classes have different
@@ -39,3 +39,15 @@ conceptual editorial artwork, not paper figures, measurements, model-state
 visualizations, or experimental evidence. Generation prompts, tool provenance,
 and deterministic WebP conversion details are recorded in
 [`illustrations/README.md`](illustrations/README.md).
+
+## README banner
+
+`hero.jpg` is generated seaside artwork with the paper title set in CMU Serif
+Roman small capitals. It is a decorative banner, not a scientific figure or a
+photograph documenting a real event. The scene was created with OpenAI image
+generation; the final title uses font outlines composited over the artwork.
+The JPEG is a 3840 × 1101 resampled export.
+
+CMU Serif Roman is distributed under the SIL Open Font License 1.1. Its
+letterforms are rasterized into the banner; no font software is included in
+this asset. The banner does not use the paper figures' CC BY 4.0 license.

@@ -51,6 +51,7 @@ MAX_GIT_BLOB_BYTES = 95 * 1024 * 1024
 DOC_IMAGE_ALLOWLIST = frozenset(
     {
         "docs/assets/favicon.svg",
+        "docs/assets/hero.jpg",
         "docs/assets/og-card.png",
         "docs/assets/pku-logo.svg",
         "docs/assets/illustrations/support-reachability.webp",
